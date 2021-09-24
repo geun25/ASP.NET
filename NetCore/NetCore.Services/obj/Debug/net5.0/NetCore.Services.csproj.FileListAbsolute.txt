@@ -1,0 +1,15 @@
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\NetCore.Services.deps.json
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\NetCore.Services.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\ref\NetCore.Services.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\NetCore.Services.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\NetCore.Data.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\bin\Debug\net5.0\NetCore.Data.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.csproj.AssemblyReference.cache
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.AssemblyInfoInputs.cache
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.AssemblyInfo.cs
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.csproj.CoreCompileInputs.cache
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.csproj.CopyComplete
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\ref\NetCore.Services.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Services\obj\Debug\net5.0\NetCore.Services.pdb
