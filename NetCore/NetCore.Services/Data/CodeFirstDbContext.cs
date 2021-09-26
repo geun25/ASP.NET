@@ -19,6 +19,8 @@ namespace NetCore.Services.Data
 
         //DB 테이블 리스트 지정
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserROles { get; set; }
+        public DbSet<UserRolesByUser> UserRolesByUsers { get; set; }
 
         //메서드 상속, 부모클래스에서 OnModelCreating 메서드가 virtual
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,20 +28,23 @@ namespace NetCore.Services.Data
             base.OnModelCreating(modelBuilder);
 
             //4가지 작업
-            //DB 테이블이름 지정
+            //DB 테이블이름 변경
             modelBuilder.Entity<User>().ToTable(name: "User");
+            modelBuilder.Entity<UserRole>().ToTable(name: "UserRole");
+            modelBuilder.Entity<UserRolesByUser>().ToTable(name: "UserRolesByUser");
 
             //복합키 지정
-            modelBuilder.Entity<UserRoleByUser>().HasKey(c => new { c.UserId, c.RoleId });
+            modelBuilder.Entity<UserRolesByUser>().HasKey(c => new { c.UserId, c.RoleId });
 
             //컬럼 기본값 지정
             modelBuilder.Entity<User>(e =>
             {
                 e.Property(c => c.IsMembershipWithdrawn).HasDefaultValue(value: false);
+                //e.Property(c => c.JoinedUtcDate).HasDefaultValue(value: DateTime.UtcNow);
             });
 
-            //인덱스 지정
-            modelBuilder.Entity<User>().HasIndex(c => new { c.UserEmail });
+            //인덱스 지정: 중복이 되지 않도록 
+            modelBuilder.Entity<User>().HasIndex(c => new { c.UserEmail }).IsUnique(unique: true);
         }
     }
 }

@@ -1,0 +1,13 @@
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\NetCore.Databases.dll.config
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\NetCore.Databases.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\NetCore.Databases.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\EntityFramework.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\EntityFramework.xml
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\ko\EntityFramework.resources.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.csproj.AssemblyReference.cache
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.csproj.CoreCompileInputs.cache
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.csproj.CopyComplete
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.pdb

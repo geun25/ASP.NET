@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,8 @@ namespace NetCore.Data.DataModels
 
         [Required]
         public DateTime ModifiedUtcDate { get; set; }
+
+        [ForeignKey("RoleId")]
+        public virtual ICollection<UserRolesByUser> UserRolesByUsers { get; set; }
     }
 }

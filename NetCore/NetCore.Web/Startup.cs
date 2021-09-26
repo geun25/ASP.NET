@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCore.Services.Data;
 using NetCore.Services.Interfaces;
 using NetCore.Services.Svcs;
 using System;
@@ -26,6 +28,16 @@ namespace NetCore.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUser, UserService>(); //IUser 인터페이스에 UserService 클래스 인스턴스 주입
+
+            //DB접속정보, Migrations 프로젝트 지정
+            //services.AddDbContext<CodeFirstDbContext>(options => 
+            //            options.UseSqlServer(connectionString: Configuration.GetConnectionString(name:"DefaultConnection"),
+            //                                 sqlServerOptionsAction:mig => mig.MigrationsAssembly(assemblyName:"NetCore.Migrations")));
+
+            //DB접속정보만
+            services.AddDbContext<DBFirstDbContext>(options =>
+                        options.UseSqlServer(connectionString: Configuration.GetConnectionString(name:"DBFirstDBConnection")));
+
             services.AddControllersWithViews();
         }
 
