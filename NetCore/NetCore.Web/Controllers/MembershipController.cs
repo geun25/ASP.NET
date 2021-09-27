@@ -42,6 +42,9 @@ namespace NetCore.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                // 데이터베이스를 통해서 데이터모델이 연동되어 값을 가지고 있어서
+                // 그것과 입력받은 값들과 비교를 해야함.
+                // 서비스의 개념...
                 if (_user.MatchTheUserInfo(login))
                 {
                     TempData["Message"] = "로그인 성공!!!";

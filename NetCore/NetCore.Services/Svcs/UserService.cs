@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace NetCore.Services.Svcs
 {
@@ -37,9 +38,39 @@ namespace NetCore.Services.Svcs
             //};
         }
 
+        private User GetUserInfo(string userId, string password)
+        {
+            User user;
+
+            //Lambda
+            //user = _context.Users.Where(u => u.UserId.Equals(userId) && u.Password.Equals(password)).FirstOrDefault();
+
+            //FromSql
+
+            //TABLE
+            //user = _context.Users.FromSql("SELECT UserId, UserName, UserEmail, Password, IsMembershipWithdrawn, JoinedUtcDate FROM dbo.[User]")
+            //                    .Where(u => u.UserId.Equals(userId) && u.Password.Equals(password))
+            //                    .FirstOrDefault();
+
+            //VIEW
+            //user = _context.Users.FromSql("SELECT UserId, UserName, UserEmail, Password, IsMembershipWithdrawn, JoinedUtcDate FROM dbo.uvwUser")
+            //                    .Where(u => u.UserId.Equals(userId) && u.Password.Equals(password))
+            //                    .FirstOrDefault();
+
+            //FUNCTION
+            //user = _context.Users.FromSql($"SELECT UserId, UserName, UserEmail, Password, IsMembershipWithdrawn, JoinedUtcDate FROM dbo.ufnUser({userId}{password})")
+            //                    .FirstOrDefault();
+
+            //STORED PROCEDURE
+            user = _context.Users.FromSql("dbo.uspCheckLoginByUserId @p0, @p1", new[] { userId, password })
+                                  .FirstOrDefault();
+
+            return user;
+        }
         private bool checkTheUserInfo(string userid, string password)
         {
-            return GetUserInfos().Where(u => u.UserId.Equals(userid) && u.Password.Equals(password)).Any(); // 리스트 데이터 유무체크
+            //return GetUserInfos().Where(u => u.UserId.Equals(userid) && u.Password.Equals(password)).Any(); // 리스트 데이터 유무체크
+            return GetUserInfo(userid, password) != null ? true : false;
         }
         #endregion
 
