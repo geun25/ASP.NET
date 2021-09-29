@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using NetCore.Services.Interfaces;
 using NetCore.Services.Svcs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,8 +28,9 @@ namespace NetCore.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<IUser, UserService>(); //IUser 인터페이스에 UserService 클래스 인스턴스 주입
+        { 
+            //IUser 인터페이스에 UserService 클래스 인스턴스 주입
+            services.AddScoped<IUser, UserService>(); 
 
             //DB접속정보, Migrations 프로젝트 지정
             //services.AddDbContext<CodeFirstDbContext>(options => 
