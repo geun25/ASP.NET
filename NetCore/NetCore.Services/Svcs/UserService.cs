@@ -43,7 +43,7 @@ namespace NetCore.Services.Svcs
             User user;
 
             //Lambda
-            //user = _context.Users.Where(u => u.UserId.Equals(userId) && u.Password.Equals(password)).FirstOrDefault();
+            user = _context.Users.Where(u => u.UserId.Equals(userId) && u.Password.Equals(password)).FirstOrDefault();
 
             //FromSql
 
@@ -62,19 +62,19 @@ namespace NetCore.Services.Svcs
             //                    .FirstOrDefault();
 
             //STORED PROCEDURE // 파라미터 설정 가능
-            user = _context.Users.FromSql("dbo.uspCheckLoginByUserId @p0, @p1", new[] { userId, password })
-                                  .FirstOrDefault();
+            //user = _context.Users.FromSql("dbo.uspCheckLoginByUserId @p0, @p1", new[] { userId, password })
+            //                      .FirstOrDefault();
 
             if(user == null)
             {
                 // 접속 실패횟수에 대한 증가
-                int rowAffected;
+                //int rowAffected;
 
                 // SQL문 직접 작성
                 //rowAffected = _context.Database.ExecuteSqlCommand($"Update dbo.[User] SET AccessFailedCount += 1 WHERE UserId={userId}");
 
                 //Stored Procedure
-                rowAffected = _context.Database.ExecuteSqlCommand("dbo.FailedLoginBuUserId", parameters: new[] { userId });
+                //rowAffected = _context.Database.ExecuteSqlCommand("dbo.FailedLoginBuUserId", parameters: new[] { userId });
             }
 
             return user;

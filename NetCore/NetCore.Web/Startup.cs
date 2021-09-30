@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using NetCore.Services.Data;
 using NetCore.Services.Interfaces;
 using NetCore.Services.Svcs;
+using NetCore.Utilities.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,9 @@ namespace NetCore.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
+            Common.SetDataPortection(services, @"C:\Users\jin yeong\Desktop\ASP.NET\", "NetCore", Enums.CryptoType.CngCbc);
+
             //IUser 인터페이스에 UserService 클래스 인스턴스 주입
             services.AddScoped<IUser, UserService>(); 
 

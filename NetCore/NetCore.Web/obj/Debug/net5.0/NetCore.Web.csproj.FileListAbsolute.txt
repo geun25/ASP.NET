@@ -157,3 +157,9 @@ C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\runtimes
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\NetCore.Migrations.dll
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\NetCore.Migrations.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\NetCore.Utilities.dll
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\bin\Debug\net5.0\NetCore.Utilities.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Web\obj\Debug\net5.0\Razor\Views\Data\AES.cshtml.g.cs

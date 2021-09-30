@@ -11,3 +11,4 @@ C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.D
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.csproj.CopyComplete
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.dll
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\obj\Debug\NetCore.Databases.pdb
+C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Databases\bin\Debug\ko\EntityFramework.SqlServer.resources.dll
