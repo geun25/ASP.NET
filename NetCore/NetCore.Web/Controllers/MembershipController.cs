@@ -57,7 +57,7 @@ namespace NetCore.Web.Controllers
                     // 신원보증과 승인권한
                     var userInfo = _user.GetUserInfo(login.UserId);
                     var roles = _user.GetRolesOwnedByUser(login.UserId);
-                    var userTopRole = roles.f
+                    
                     var identity = new ClaimsIdentity(claims: new[]
                     {
                         new Claim(type:ClaimTypes.Name,
