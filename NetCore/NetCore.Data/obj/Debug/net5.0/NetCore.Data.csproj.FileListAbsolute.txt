@@ -21,4 +21,3 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\ref\NetCore.Data.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.pdb
-C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.csproj.AssemblyReference.cache

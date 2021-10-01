@@ -99,7 +99,7 @@ namespace NetCore.Services.Svcs
                 role.UserRole = GetUserRole(role.RoleId);
             }
 
-            return userRolesByUserInfos;
+            return userRolesByUserInfos.OrderByDescending(uru => uru.UserRole.RolePriority);
         }
 
         private UserRole GetUserRole(string roleId)

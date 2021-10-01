@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NerCore.Migrations\NetCore.Migrations.csproj" />
+    <ProjectReference Include="..\NetCore.Migrations\NetCore.Migrations.csproj" />
     <ProjectReference Include="..\NetCore.Services\NetCore.Services.csproj" />
     <ProjectReference Include="..\NetCore.Utility\NetCore.Utilities.csproj" />
   </ItemGroup>

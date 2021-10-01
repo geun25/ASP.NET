@@ -7520,8 +7520,8 @@
     },
     "NetCore.Migrations/1.0.0": {
       "type": "project",
-      "path": "../NerCore.Migrations/NetCore.Migrations.csproj",
-      "msbuildProject": "../NerCore.Migrations/NetCore.Migrations.csproj"
+      "path": "../NetCore.Migrations/NetCore.Migrations.csproj",
+      "msbuildProject": "../NetCore.Migrations/NetCore.Migrations.csproj"
     },
     "NetCore.Services/1.0.0": {
       "type": "project",
@@ -7570,8 +7570,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj": {
-              "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj"
+            "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Migrations\\NetCore.Migrations.csproj": {
+              "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Migrations\\NetCore.Migrations.csproj"
             },
             "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {
               "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj"
