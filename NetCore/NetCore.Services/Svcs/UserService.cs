@@ -84,11 +84,44 @@ namespace NetCore.Services.Svcs
             //return GetUserInfos().Where(u => u.UserId.Equals(userid) && u.Password.Equals(password)).Any(); // 리스트 데이터 유무체크
             return GetUserInfo(userid, password) != null ? true : false;
         }
+
+        private User GetUserInfo(string userId)
+        {
+            return _context.Users.Where(u => u.UserId.Equals(userId)).FirstOrDefault();
+        }
+
+        private IEnumerable<UserRolesByUser> GetUserRolesByUserInfos(string userId)
+        {
+            var userRolesByUserInfos = _context.UserRolesByUsers.Where(uru => uru.UserId.Equals(userId)).ToList();
+
+            foreach(var role in userRolesByUserInfos) // 권한에 대한 이름과 우선순위를 가져오기 위해 foreach 사용
+            {
+                role.UserRole = GetUserRole(role.RoleId);
+            }
+
+            return userRolesByUserInfos;
+        }
+
+        private UserRole GetUserRole(string roleId)
+        {
+            return _context.UserRoles.Where(ur => ur.RoleId.Equals(roleId)).FirstOrDefault();
+        }
+
         #endregion
 
         bool IUser.MatchTheUserInfo(LoginInfo login) // 명시적으로 인터페이스 구현
         {
             return checkTheUserInfo(login.UserId, login.Password);
+        }
+
+        User IUser.GetUserInfo(string userId)
+        {
+            return GetUserInfo(userId);
+        }
+
+        IEnumerable<UserRolesByUser> IUser.GetRolesOwnedByUser(string userId)
+        {
+            return GetUserRolesByUserInfos(userId);
         }
     }
 }

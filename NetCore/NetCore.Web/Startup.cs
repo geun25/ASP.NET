@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,15 @@ namespace NetCore.Web
                         options.UseSqlServer(connectionString: Configuration.GetConnectionString(name:"DBFirstDBConnection")));
 
             services.AddControllersWithViews();
+
+            //신원보증과 승인권한
+            services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.AccessDeniedPath = "/Membership/Forbidden"; // 접근제한 경로
+                        options.LoginPath = "/Membership/Login";
+                    });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +74,9 @@ namespace NetCore.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //신원보증만
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

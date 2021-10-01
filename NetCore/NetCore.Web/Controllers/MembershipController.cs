@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using NetCore.Data.ViewModels;
 using NetCore.Services.Interfaces;
 using NetCore.Services.Svcs;
 using NetCore.Web.Models;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace NetCore.Web.Controllers
 {
@@ -12,10 +17,12 @@ namespace NetCore.Web.Controllers
 
         // 의존성 주입 - 생성자
         private IUser _user;
+        private HttpContext _context;
 
-        public MembershipController(IUser user)
+        public MembershipController(IHttpContextAccessor accessor, IUser user)
         {
             _user = user;
+            _context = accessor.HttpContext;
         }
 
         public IActionResult Index()
@@ -29,14 +36,14 @@ namespace NetCore.Web.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("/Login")]
         [ValidateAntiForgeryToken] // 위조방지토큰을 통해 View로부터 받은 Post data가 유효한지 검증
 
         //Data => Services => Web
         //Data => Services
         //Data => Web
 
-        public IActionResult Login(LoginInfo login)
+        public async Task<IActionResult> LoginAsync(LoginInfo login)
         {
             string message = string.Empty;
 
@@ -47,6 +54,21 @@ namespace NetCore.Web.Controllers
                 // 서비스의 개념...
                 if (_user.MatchTheUserInfo(login))
                 {
+                    // 신원보증과 승인권한
+                    var userInfo = _user.GetUserInfo(login.UserId);
+                    var roles = _user.GetRolesOwnedByUser(login.UserId);
+                    var userTopRole = roles.f
+                    var identity = new ClaimsIdentity(claims: new[]
+                    {
+                        new Claim(type:ClaimTypes.Name,
+                                  value:userInfo.UserName),
+                        new Claim(type:ClaimTypes.Role,
+                                  value:)
+                    }, authenticationType:);
+                    await _context.SignInAsync(scheme:CookieAuthenticationDefaults.AuthenticationScheme,
+                                               principal:new ClaimsPrincipal(identity:identity),
+                                               properties:);
+
                     TempData["Message"] = "로그인 성공!!!";
                     return RedirectToAction("index", "Membership");
                 }

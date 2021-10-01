@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {}
+    "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj": {
+    "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj",
+        "projectUniqueName": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj",
         "projectName": "NetCore.Data",
-        "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj",
-        "packagesPath": "C:\\Users\\jin yeong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\obj\\",
+        "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj",
+        "packagesPath": "C:\\Users\\rlaeh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jin yeong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rlaeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,17 +58,17 @@
         }
       }
     },
-    "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {
+    "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj",
+        "projectUniqueName": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj",
         "projectName": "NetCore.Services",
-        "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj",
-        "packagesPath": "C:\\Users\\jin yeong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\obj\\",
+        "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj",
+        "packagesPath": "C:\\Users\\rlaeh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jin yeong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rlaeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj": {
-                "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj"
+              "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj": {
+                "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Data\\NetCore.Data.csproj"
               }
             }
           }

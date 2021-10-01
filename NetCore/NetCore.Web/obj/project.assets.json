@@ -7544,19 +7544,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jin yeong\\.nuget\\packages\\": {}
+    "C:\\Users\\rlaeh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Web\\NetCore.Web.csproj",
+      "projectUniqueName": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Web\\NetCore.Web.csproj",
       "projectName": "NetCore.Web",
-      "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Web\\NetCore.Web.csproj",
-      "packagesPath": "C:\\Users\\jin yeong\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Web\\obj\\",
+      "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Web\\NetCore.Web.csproj",
+      "packagesPath": "C:\\Users\\rlaeh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jin yeong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rlaeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7570,14 +7570,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj": {
-              "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj"
+            "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj": {
+              "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NerCore.Migrations\\NetCore.Migrations.csproj"
             },
-            "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {
-              "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj"
+            "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj": {
+              "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Services\\NetCore.Services.csproj"
             },
-            "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Utility\\NetCore.Utilities.csproj": {
-              "projectPath": "C:\\Users\\jin yeong\\.vscode\\ASP.NET\\NetCore\\NetCore.Utility\\NetCore.Utilities.csproj"
+            "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Utility\\NetCore.Utilities.csproj": {
+              "projectPath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\NetCore\\NetCore.Utility\\NetCore.Utilities.csproj"
             }
           }
         }

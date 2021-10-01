@@ -10,3 +10,15 @@ C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.dll
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\ref\NetCore.Data.dll
 C:\Users\jin yeong\.vscode\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.pdb
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\bin\Debug\net5.0\NetCore.Data.deps.json
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\bin\Debug\net5.0\NetCore.Data.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\bin\Debug\net5.0\ref\NetCore.Data.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\bin\Debug\net5.0\NetCore.Data.pdb
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.AssemblyInfoInputs.cache
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.AssemblyInfo.cs
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.csproj.CoreCompileInputs.cache
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\ref\NetCore.Data.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.pdb
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\NetCore\NetCore.Data\obj\Debug\net5.0\NetCore.Data.csproj.AssemblyReference.cache
