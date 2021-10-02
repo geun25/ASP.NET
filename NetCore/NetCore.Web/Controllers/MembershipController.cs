@@ -60,13 +60,21 @@ namespace NetCore.Web.Controllers
                     var userInfo = _user.GetUserInfo(login.UserId);
                     var roles = _user.GetRolesOwnedByUser(login.UserId);
                     var userTopRole = roles.FirstOrDefault();
+                    string userDataInfo = userTopRole.UserRole.RoleName + "|" +
+                                          userTopRole.UserRole.RolePriority.ToString() + "|" +
+                                          userInfo.UserName + "|" +
+                                          userInfo.UserEmail;
+
+                    //_context.User.Identity.Name => 사용자 아이디
 
                     var identity = new ClaimsIdentity(claims: new[]
                     {
                         new Claim(type:ClaimTypes.Name,
-                                  value:userInfo.UserName),
+                                  value:userInfo.UserId),
                         new Claim(type:ClaimTypes.Role,
-                                  value:userTopRole.RoleId + "|" + userTopRole.UserRole.RoleName + "|" + userTopRole.UserRole.RolePriority.ToString())
+                                  value:userTopRole.RoleId),
+                        new Claim(type:ClaimTypes.UserData,
+                                  value:userDataInfo)
                     }, authenticationType: CookieAuthenticationDefaults.AuthenticationScheme);
 
                     await _context.SignInAsync(scheme: CookieAuthenticationDefaults.AuthenticationScheme,

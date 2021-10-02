@@ -19,7 +19,7 @@ namespace NetCore.Services.Data
 
         //DB 테이블 리스트 지정
         public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UserROles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<UserRolesByUser> UserRolesByUsers { get; set; }
 
         //메서드 상속, 부모클래스에서 OnModelCreating 메서드가 virtual
