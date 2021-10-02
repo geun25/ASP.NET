@@ -1,0 +1,15 @@
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.AssemblyInfoInputs.cache
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.AssemblyInfo.cs
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.csproj.CoreCompileInputs.cache
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\Core.Services.deps.json
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\Core.Services.dll
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\ref\Core.Services.dll
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\Core.Services.pdb
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\Core.Data.dll
+C:\Users\rlaeh\source\repos\Core\Core.Services\bin\Debug\net5.0\Core.Data.pdb
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.csproj.AssemblyReference.cache
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.csproj.CopyComplete
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.dll
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\ref\Core.Services.dll
+C:\Users\rlaeh\source\repos\Core\Core.Services\obj\Debug\net5.0\Core.Services.pdb
