@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,9 @@ namespace Core.Data.Classes
 {
     public class UserRolesByUser
     {
+        [Key]
         public string UserId { get; set; }
+        [Key]
         public string RoleId { get; set; }
         public System.DateTime OwnedUtcDate { get; set; }
 

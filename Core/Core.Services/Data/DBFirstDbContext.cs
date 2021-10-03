@@ -29,6 +29,9 @@ namespace Core.Services.Data
             modelBuilder.Entity<User>().ToTable(name: "User");
             modelBuilder.Entity<UserRole>().ToTable(name: "UserRole");
             modelBuilder.Entity<UserRolesByUser>().ToTable(name: "UserRolesByUser");
+
+            //복합키 지정
+            modelBuilder.Entity<UserRolesByUser>().HasKey(c => new { c.UserId, c.RoleId });
         }
     }
 }

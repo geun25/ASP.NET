@@ -32,9 +32,14 @@ namespace Core.Web
             services.AddScoped<IUser, UserService>();
 
             //DB접속정보, Migrations 프로젝트 지정
-            services.AddDbContext<CodeFirstDbContext>(options =>
-                        options.UseSqlServer(connectionString: Configuration.GetConnectionString(name: "DefaultConnection"),
-                                             sqlServerOptionsAction: mig => mig.MigrationsAssembly(assemblyName: "Core.Migrations")));
+            //services.AddDbContext<CodeFirstDbContext>(options =>
+            //            options.UseSqlServer(connectionString: Configuration.GetConnectionString(name: "DefaultConnection"),
+            //                                 sqlServerOptionsAction: mig => mig.MigrationsAssembly(assemblyName: "Core.Migrations")));
+
+            //DB접속정보만
+            services.AddDbContext<DBFirstDbContext>(options =>
+                        options.UseSqlServer(connectionString: Configuration.GetConnectionString(name: "DBFirstDBConnection")));
+
 
             services.AddControllersWithViews();
             //services.AddMvc();
