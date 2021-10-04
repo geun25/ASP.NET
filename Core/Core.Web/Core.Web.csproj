@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core.Migrations\Core.Migrations.csproj" />
     <ProjectReference Include="..\Core.Services\Core.Services.csproj" />
+    <ProjectReference Include="..\Core.Utilities\Core.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

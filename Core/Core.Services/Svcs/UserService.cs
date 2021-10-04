@@ -65,10 +65,10 @@ namespace Core.Services.Svcs
             if (user == null)
             {
                 // 접속 실패횟수에 대한 증가
-                int rowAffected;
+                //int rowAffected;
 
                 // SQL문 직접 작성
-                rowAffected = _context.Database.ExecuteSqlCommand($"Update dbo.[User] SET AccessFailedCount += 1 WHERE UserId={userId}");
+                //rowAffected = _context.Database.ExecuteSqlCommand($"Update dbo.[User] SET AccessFailedCount += 1 WHERE UserId={userId}");
 
                 //Stored Procedure
                 //rowAffected = _context.Database.ExecuteSqlCommand("dbo.FailedLoginBuUserId", parameters: new[] { userId });
@@ -82,11 +82,43 @@ namespace Core.Services.Svcs
             //return GetUserInfos().Where(u => u.UserId.Equals(userid) && u.Password.Equals(password)).Any(); // 리스트 데이터 유무체크
             return GetUserInfo(userid, password) != null ? true : false;
         }
+
+        private User GetUserInfo(string userId)
+        {
+            return _context.Users.Where(u => u.UserId.Equals(userId)).FirstOrDefault();
+        }
+
+        private IEnumerable<UserRolesByUser> GetUserRolesByUserInfos(string userId)
+        {
+            var userRolesByUserInfos = _context.UserRolesByUsers.Where(uru => uru.UserId.Equals(userId)).ToList();
+
+            foreach (var role in userRolesByUserInfos) // 권한에 대한 이름과 우선순위를 가져오기 위해 foreach 사용
+            {
+                role.UserRole = GetUserRole(role.RoleId);
+            }
+
+            return userRolesByUserInfos.OrderByDescending(uru => uru.UserRole.RolePriority); // 내림차순 정렬
+        }
+
+        private UserRole GetUserRole(string roleId)
+        {
+            return _context.UserRoles.Where(ur => ur.RoleId.Equals(roleId)).FirstOrDefault();
+        }
         #endregion
 
         bool IUser.MatchTheUserInfo(LoginInfo login) //IUser 상속받은후 명시적 구현
         {
             return checkTheUserInfo(login.UserId, login.Password);
+        }
+
+        User IUser.GetUserInfo(string userId)
+        {
+            return GetUserInfo(userId);
+        }
+
+        public IEnumerable<UserRolesByUser> GetRolesOwnedByUser(string userId)
+        {
+            return GetUserRolesByUserInfos(userId);
         }
     }
 }

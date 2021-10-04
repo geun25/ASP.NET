@@ -306,3 +306,9 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Core.W
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\ref\Core.Web.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Core.Web.pdb
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Core.Web.genruntimeconfig.cache
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Core.Utilities.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Core.Utilities.pdb
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\Views\Data\AES.cshtml.g.cs

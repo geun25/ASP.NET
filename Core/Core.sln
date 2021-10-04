@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Web", "Core.Web\Core.Web.csproj", "{27F9B0C2-0237-40E1-91E2-6D872DA8970C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Web", "Core.Web\Core.Web.csproj", "{27F9B0C2-0237-40E1-91E2-6D872DA8970C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Services", "Core.Services\Core.Services.csproj", "{48DEACA0-198A-4649-90EB-0E9D77C3ED2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Services", "Core.Services\Core.Services.csproj", "{48DEACA0-198A-4649-90EB-0E9D77C3ED2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Data", "Core.Data\Core.Data.csproj", "{AEB9DE9D-E677-47B7-B169-C2EA45DD31C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Data", "Core.Data\Core.Data.csproj", "{AEB9DE9D-E677-47B7-B169-C2EA45DD31C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Migrations", "Core.Migrations\Core.Migrations.csproj", "{57761258-5563-4A76-B20A-E03C50D88A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Migrations", "Core.Migrations\Core.Migrations.csproj", "{57761258-5563-4A76-B20A-E03C50D88A5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Databases", "Core.Databases\Core.Databases.csproj", "{5B1F3250-64F9-46C2-BD6B-F4F7342100DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Utilities", "Core.Utilities\Core.Utilities.csproj", "{943EBF89-B7C5-404D-B1FC-2EB6055384CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{5B1F3250-64F9-46C2-BD6B-F4F7342100DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B1F3250-64F9-46C2-BD6B-F4F7342100DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B1F3250-64F9-46C2-BD6B-F4F7342100DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

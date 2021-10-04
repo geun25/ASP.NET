@@ -1,4 +1,5 @@
-﻿using Core.Data.ViewModels;
+﻿using Core.Data.Classes;
+using Core.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Core.Services.Interfaces
 {
     public interface IUser // 실제 사용할 서비스 메서드 선언 
     {
-        bool MatchTheUserInfo(LoginInfo login);      
+        bool MatchTheUserInfo(LoginInfo login);
+        User GetUserInfo(string userId);
+        IEnumerable<UserRolesByUser> GetRolesOwnedByUser(string userId);
     }
 }

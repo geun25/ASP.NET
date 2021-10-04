@@ -1,7 +1,10 @@
 using Core.Services.Data;
 using Core.Services.Interfaces;
 using Core.Services.Svcs;
+using Core.Utilities.Utils;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +30,9 @@ namespace Core.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
+            Common.SetDataProtection(services, @"C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\", "NetCore", Enums.CryptoType.CngCbc);
+
             // 의존성 주입을 사용하기 위해서 서비스로 등록
             //IUser 인터페이스에 UserService 클래스 인스턴스 주입
             services.AddScoped<IUser, UserService>();
@@ -43,6 +49,15 @@ namespace Core.Web
 
             services.AddControllersWithViews();
             //services.AddMvc();
+
+            //신원보증과 승인권한
+            services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.AccessDeniedPath = "/Membership/Forbidden"; // 접근제한 경로
+                        options.LoginPath = "/Membership/Login";
+                    });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +77,9 @@ namespace Core.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //신원보증만
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
