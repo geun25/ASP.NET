@@ -21,7 +21,7 @@ namespace NetCore.Utilities.Utils
         /// <param name="keyPath">키 경로</param>
         /// <param name="applicationName">애플리케이션 이름</param>
         /// <param name="cryptoType">암호화 유형</param>
-        public static void SetDataPortection(IServiceCollection services, string keyPath, string applicationName, Enum cryptoType)
+        public static void SetDataProtection(IServiceCollection services, string keyPath, string applicationName, Enum cryptoType)
         {
             var builder = services.AddDataProtection()
                 .PersistKeysToFileSystem(new DirectoryInfo(keyPath))

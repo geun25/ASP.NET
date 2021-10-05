@@ -10,7 +10,7 @@
     if(Context.User.Claims.Any())
     {
         userId = User.FindFirst(claim => claim.Type.Equals(ClaimTypes.Name)).Value;
-        userRoleId = User.FindFirst(claim => claim.Type.Equals(ClaimType.Role)).Value;
+        userRoleId = User.FindFirst(claim => claim.Type.Equals(ClaimTypes.Role)).Value;
         userDataInfos = User.FindFirst(claim => claim.Type.Equals(ClaimTypes.UserData)).Value.Split("|");
 
     }

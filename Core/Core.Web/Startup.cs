@@ -54,7 +54,7 @@ namespace Core.Web
             services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>
                     {
-                        options.AccessDeniedPath = "/Membership/Forbidden"; // 접근제한 경로
+                        options.AccessDeniedPath = "/Membership/Forbidden"; // 권한없는 사용자가 가는 경로
                         options.LoginPath = "/Membership/Login";
                     });
             services.AddAuthorization();

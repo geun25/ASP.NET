@@ -1,4 +1,5 @@
 ﻿using Core.Data.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,6 +19,7 @@ namespace Core.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "GeneralUser, SuperUser, SystemUser")]
         public IActionResult AES()
         {
             return View();
@@ -25,6 +27,7 @@ namespace Core.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "GeneralUser, SuperUser, SystemUser")]
         public IActionResult AES(AESInfo aes)
         {
             string message = string.Empty;

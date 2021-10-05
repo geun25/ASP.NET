@@ -4,8 +4,10 @@ using Core.Services.Svcs;
 using Core.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace Core.Web.Controllers
 {
+    [Authorize(Roles = "AssociateUser, GeneralUser, SuperUser, SystemUser")]
     public class MembershipController : Controller
     {
         //private IUser _user = new UserService(); //인터페이스에서 Service를 사용하기 위해 Service Class 인스턴스를 받아온다.
@@ -28,26 +31,48 @@ namespace Core.Web.Controllers
             _user = user;
         }
 
+        #region private methods
+        /// <summary>
+        /// 로컬 URL인지 외부URL인지 체크
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl); 
+            }
+            else
+            {
+                return RedirectToAction(nameof(MembershipController.Index), "Memebership");
+            }
+        }
+        #endregion
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public IActionResult Login()
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost("/Login")]
         [ValidateAntiForgeryToken] // 위조방지토큰을 통해 View로부터 받은 Post data가 유효한지 검증
-
+        [AllowAnonymous] // 모든 사람 접근 허용
         //Data => Services => Web
         //Data => Services
         //Data => Web
-
-        public async Task<IActionResult> LoginAsync(LoginInfo login)
+        public async Task<IActionResult> LoginAsync(LoginInfo login, string returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
+
             string message = string.Empty;
 
             if (ModelState.IsValid)
@@ -71,9 +96,9 @@ namespace Core.Web.Controllers
                     var identity = new ClaimsIdentity(claims: new[]
                     {
                         new Claim(type:ClaimTypes.Name,
-                                  value:userInfo.UserName),
+                                  value:userInfo.UserId),
                         new Claim(type:ClaimTypes.Role,
-                                  value:userTopRole.RoleId + "|" + userTopRole.UserRole.RoleName + "|" + userTopRole.UserRole.RolePriority.ToString()),
+                                  value:userTopRole.RoleId),
                         new Claim(type:ClaimTypes.UserData,
                                   value:userDataInfo)
                     }, authenticationType: CookieAuthenticationDefaults.AuthenticationScheme);
@@ -87,7 +112,9 @@ namespace Core.Web.Controllers
                                                });
 
                     TempData["Message"] = "로그인 성공!!!";
-                    return RedirectToAction("Index", "Membership");
+
+                    //return RedirectToAction("Index", "Membership");
+                    return RedirectToLocal(returnUrl);
                 }
                 else
                 {
@@ -111,6 +138,19 @@ namespace Core.Web.Controllers
             TempData["Message"] = "로그아웃이 성공적으로 이루어졌습니다. <br />웹사이트를 원활히 이용하시려면 로그인하세요.";
 
             return RedirectToAction("Index", "Membership");
+        }
+
+        [HttpGet]
+        public IActionResult Forbidden()
+        {
+            StringValues paramReturnUrl;
+            bool exists = _context.Request.Query.TryGetValue("returnUrl", out paramReturnUrl);
+            paramReturnUrl = exists ? _context.Request.Host.Value + paramReturnUrl[0] : string.Empty;
+
+            ViewData["Message"] = $"귀하는 {paramReturnUrl} 경로로 접근하려고 했습니다만, <br />" +
+                                    "인증된 사용자도 접근하지 못하는 페이지가 있습니다.<br />" +
+                                    "담당자에게 해당페이지의 접근권한에 대해 문의하세요.";
+            return View();
         }
     }
 }
