@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Migrations", "Core.Mig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Databases", "Core.Databases\Core.Databases.csproj", "{5B1F3250-64F9-46C2-BD6B-F4F7342100DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Utilities", "Core.Utilities\Core.Utilities.csproj", "{943EBF89-B7C5-404D-B1FC-2EB6055384CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Utilities", "Core.Utilities\Core.Utilities.csproj", "{943EBF89-B7C5-404D-B1FC-2EB6055384CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Test.PasswordHasher", "Core.Test.PasswordHasher\Core.Test.PasswordHasher.csproj", "{D41921EB-CB5E-450C-96B5-A354E07B1454}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{943EBF89-B7C5-404D-B1FC-2EB6055384CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41921EB-CB5E-450C-96B5-A354E07B1454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41921EB-CB5E-450C-96B5-A354E07B1454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41921EB-CB5E-450C-96B5-A354E07B1454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41921EB-CB5E-450C-96B5-A354E07B1454}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

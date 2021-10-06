@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "dFXtZRd19fovukdE2AGv4CZ2fgT/CUxlxUfpNPDnZBKIvkESsrJiWinv0e9jnbsaCB/2La3O7vA1JF893Sfypw==",
+  "dgSpecHash": "ysBMjpIci+m5eBiAPt+jagOcC4oh4eAADZ9572RGn460Ftk5D3Cl9EQz6YeNroYSTFf4n7si7r5sJrMFqpJ3lg==",
   "success": true,
   "projectFilePath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\Core\\Core.Web\\Core.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rlaeh\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.10\\microsoft.aspnetcore.cryptography.internal.5.0.10.nupkg.sha512",
+    "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.10\\microsoft.aspnetcore.cryptography.keyderivation.5.0.10.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\5.0.10\\microsoft.aspnetcore.dataprotection.5.0.10.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\5.0.10\\microsoft.aspnetcore.dataprotection.abstractions.5.0.10.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "tKkSYfS/qB4QJy25m5J+CnUCYi5osUQV4WZcxFj2qzcr/t7d2/EFukf66qZBYS4xHl7dMGEIBPISfsjON8IfHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rlaeh\\source\\repos\\geun25\\ASP.NET\\Core\\Core.Test.PasswordHasher\\Core.Test.PasswordHasher.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.10\\microsoft.aspnetcore.cryptography.internal.5.0.10.nupkg.sha512",
+    "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.10\\microsoft.aspnetcore.cryptography.keyderivation.5.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

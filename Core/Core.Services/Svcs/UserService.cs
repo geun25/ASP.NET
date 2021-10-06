@@ -6,6 +6,7 @@ using Core.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Core.Services.Svcs
 {
@@ -13,10 +14,12 @@ namespace Core.Services.Svcs
     {
         // 의존성 주입
         private DBFirstDbContext _context;
+        private IPasswordHasher _hasher;
 
-        public UserService(DBFirstDbContext context)
+        public UserService(DBFirstDbContext context, IPasswordHasher hasher)
         {
             _context = context;
+            _hasher = hasher;
         }
 
         #region private methods
@@ -40,7 +43,7 @@ namespace Core.Services.Svcs
             User user;
 
             //Lambda
-            user = _context.Users.Where(u => u.UserId.Equals(userId) && u.Password.Equals(password)).FirstOrDefault();
+            //user = _context.Users.Where(u => u.UserId.Equals(userId) && u.Password.Equals(password)).FirstOrDefault();
 
             //FromSql
 
@@ -59,8 +62,8 @@ namespace Core.Services.Svcs
             //                    .FirstOrDefault();
 
             //STORED PROCEDURE // 파라미터 설정 가능
-            //user = _context.Users.FromSql("dbo.uspCheckLoginByUserId @p0, @p1", new[] { userId, password })
-            //                      .FirstOrDefault();
+            user = _context.Users.FromSqlRaw("dbo.uspCheckLoginByUserId @p0, @p1", new[] { userId, password })
+                                  .FirstOrDefault();
 
             if (user == null)
             {
@@ -104,11 +107,48 @@ namespace Core.Services.Svcs
         {
             return _context.UserRoles.Where(ur => ur.RoleId.Equals(roleId)).FirstOrDefault();
         }
+
+        private int RegisterUser(RegisterInfo register)
+        {
+            var utcNow = DateTime.UtcNow;
+            var passwordInfo = _hasher.SetPasswordInfo(register.UserId, register.Password);
+
+            var user = new User()
+            {
+                UserId = register.UserId,
+                UserName = register.UserName,
+                UserEmail = register.UserEmail,
+                GUIDSalt = passwordInfo.GUIDSalt,
+                RNGSalt = passwordInfo.RNGSalt,
+                PasswordHash = passwordInfo.PasswordHash,
+                AccessFailedCount = 0,
+                IsMembershipWithdrawn = false,
+                JoinedUtcDate = utcNow
+            };
+
+            var userRolesByUser = new UserRolesByUser()
+            {
+                UserId = register.UserId,
+                RoleId = "AssociateUser",
+                OwnedUtcDate = utcNow
+            };
+
+            _context.Add(user);
+            _context.Add(userRolesByUser);
+
+            return  _context.SaveChanges();
+        }
         #endregion
 
         bool IUser.MatchTheUserInfo(LoginInfo login) //IUser 상속받은후 명시적 구현
         {
-            return checkTheUserInfo(login.UserId, login.Password);
+            //return checkTheUserInfo(login.UserId, login.Password);
+            var user = _context.Users.Where(u => u.UserId.Equals(login.UserId)).FirstOrDefault(); //데이터베이스에서 값들 받아오기
+
+            if (user == null)
+                return false;
+
+            return _hasher.CheckThePasswordInfo(login.UserId, login.Password, user.GUIDSalt, user.RNGSalt, user.PasswordHash);
         }
 
         User IUser.GetUserInfo(string userId)
@@ -116,9 +156,14 @@ namespace Core.Services.Svcs
             return GetUserInfo(userId);
         }
 
-        public IEnumerable<UserRolesByUser> GetRolesOwnedByUser(string userId)
+        IEnumerable<UserRolesByUser> IUser.GetRolesOwnedByUser(string userId)
         {
             return GetUserRolesByUserInfos(userId);
+        }
+
+        int IUser.RegisterUser(RegisterInfo register)
+        {
+            return RegisterUser(register);
         }
     }
 }

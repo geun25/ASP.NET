@@ -23,11 +23,14 @@ namespace Core.Web.Controllers
 
         // 의존성 주입 - 생성자
         private IUser _user;
+        private IPasswordHasher _hasher;
         private HttpContext _context;
 
-        public MembershipController(IHttpContextAccessor accessor, IUser user)
+
+        public MembershipController(IHttpContextAccessor accessor, IPasswordHasher hasher, IUser user)
         {
             _context = accessor.HttpContext;
+            _hasher = hasher; 
             _user = user;
         }
 
@@ -80,7 +83,9 @@ namespace Core.Web.Controllers
                 // 데이터베이스를 통해서 데이터모델이 연동되어 값을 가지고 있어서
                 // 그것과 입력받은 값들과 비교를 해야함.
                 // 서비스 개념 : 재사용성, 모듈화를 통한 효율적 관리
-                if (_user.MatchTheUserInfo(login))
+
+                if (_user.MatchTheUserInfo(login))          
+                //if(_hasher.MatchTheUserInfo(login.UserId, login.Password))
                 {
                     // 신원보증과 승인권한
                     var userInfo = _user.GetUserInfo(login.UserId);
@@ -128,6 +133,45 @@ namespace Core.Web.Controllers
 
             ModelState.AddModelError(string.Empty, message);
             return View("Login", login);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register(string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public IActionResult Register(RegisterInfo register, string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            string message = string.Empty;
+
+            if(ModelState.IsValid)
+            {
+                // 사용자 가입 서비스
+                if(_user.RegisterUser(register) > 0) //가입이 된다면
+                {
+                    TempData["Message"] = "사용자 가입이 성공적으로 이루어졌습니다.";
+                    return RedirectToAction("Login", "Membership");
+                }
+                else
+                {
+                    message = "사용자가 가입되지 않았습니다."; 
+                }
+            }
+            else
+            {
+                message = "사용자 가입을 위한 정보를 올바르게 입력하세요.";
+            }
+
+            ModelState.AddModelError(string.Empty, message);
+            return View(register);
         }
 
         [HttpGet("/LogOut")]

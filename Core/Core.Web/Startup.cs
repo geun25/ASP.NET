@@ -36,6 +36,7 @@ namespace Core.Web
             // 의존성 주입을 사용하기 위해서 서비스로 등록
             //IUser 인터페이스에 UserService 클래스 인스턴스 주입
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             //DB접속정보, Migrations 프로젝트 지정
             //services.AddDbContext<CodeFirstDbContext>(options =>
