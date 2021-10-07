@@ -43,7 +43,7 @@ namespace Core.Services.Svcs
             // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
             //Pbkdf2 : Password-based key derivation function 2
             return Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: userId + password + guidSalt,
+                password: userId.ToLower() + password.ToLower() + guidSalt, // 아이디와 비밀번호에 대해서 대소문자 처리
                 salt: Encoding.UTF8.GetBytes(rngSalt), // byte배열로 converting
                 prf: KeyDerivationPrf.HMACSHA512,
                 iterationCount: 45000, // 10000, 25000, 45000

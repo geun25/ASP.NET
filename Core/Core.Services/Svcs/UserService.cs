@@ -108,6 +108,7 @@ namespace Core.Services.Svcs
             return _context.UserRoles.Where(ur => ur.RoleId.Equals(roleId)).FirstOrDefault();
         }
 
+        // 아이디에 대해서 대소문자 처리
         private int RegisterUser(RegisterInfo register)
         {
             var utcNow = DateTime.UtcNow;
@@ -115,7 +116,7 @@ namespace Core.Services.Svcs
 
             var user = new User()
             {
-                UserId = register.UserId,
+                UserId = register.UserId.ToLower(),
                 UserName = register.UserName,
                 UserEmail = register.UserEmail,
                 GUIDSalt = passwordInfo.GUIDSalt,
@@ -128,7 +129,7 @@ namespace Core.Services.Svcs
 
             var userRolesByUser = new UserRolesByUser()
             {
-                UserId = register.UserId,
+                UserId = register.UserId.ToLower(),
                 RoleId = "AssociateUser",
                 OwnedUtcDate = utcNow
             };
@@ -138,17 +139,59 @@ namespace Core.Services.Svcs
 
             return  _context.SaveChanges();
         }
-        #endregion
 
-        bool IUser.MatchTheUserInfo(LoginInfo login) //IUser 상속받은후 명시적 구현
+        private UserInfo GetUserInfoForUpdate(string userId)
         {
-            //return checkTheUserInfo(login.UserId, login.Password);
+            var user = GetUserInfo(userId);
+            var userInfo = new UserInfo()
+            {
+                UserId = null,
+                UserName = user.UserName,
+                UserEmail = user.UserEmail
+            };
+
+            return userInfo;
+        }
+
+        private int UpdateUser(UserInfo user)
+        {
+            var userInfo = _context.Users.Where(u => u.UserId.Equals(user.UserId)).FirstOrDefault(); //데이터베이스에서 값들 받아오기
+
+            if (user == null)
+                return 0;
+
+            bool check = _hasher.CheckThePasswordInfo(user.UserId, user.Password, userInfo.GUIDSalt, userInfo.RNGSalt, userInfo.PasswordHash);
+
+            int rowAffected = 0;
+
+            if (check)
+            {
+                _context.Update(userInfo);
+
+                userInfo.UserName = user.UserName;
+                userInfo.UserEmail = user.UserEmail;
+
+                rowAffected = _context.SaveChanges();
+            }
+
+            return rowAffected;
+        }
+
+        private bool MatchTheUserInfo(LoginInfo login)
+        {
             var user = _context.Users.Where(u => u.UserId.Equals(login.UserId)).FirstOrDefault(); //데이터베이스에서 값들 받아오기
 
             if (user == null)
                 return false;
 
             return _hasher.CheckThePasswordInfo(login.UserId, login.Password, user.GUIDSalt, user.RNGSalt, user.PasswordHash);
+        }
+        #endregion
+
+        bool IUser.MatchTheUserInfo(LoginInfo login) //IUser 상속받은후 명시적 구현
+        {
+            //return checkTheUserInfo(login.UserId, login.Password);
+            return MatchTheUserInfo(login);
         }
 
         User IUser.GetUserInfo(string userId)
@@ -164,6 +207,16 @@ namespace Core.Services.Svcs
         int IUser.RegisterUser(RegisterInfo register)
         {
             return RegisterUser(register);
+        }
+
+        UserInfo IUser.GetUserInfoForUpdate(string userId)
+        {
+            return GetUserInfoForUpdate(userId);
+        }
+
+        int IUser.UpdateUser(UserInfo user)
+        {
+            return UpdateUser(user);
         }
     }
 }

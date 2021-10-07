@@ -174,6 +174,44 @@ namespace Core.Web.Controllers
             return View(register);
         }
 
+        [HttpGet]
+        public IActionResult UpdateInfo()
+        {
+            UserInfo user = _user.GetUserInfoForUpdate(_context.User.Identity.Name); // 서비스
+            
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateInfo(UserInfo user)
+        {
+            string message = string.Empty;
+
+            if (ModelState.IsValid)
+            {
+                // 정보수정 서비스
+                if(_user.UpdateUser(user) > 0)
+                {
+                    TempData["Message"] = "사용자 정보수정이 성공적으로 이루어졌습니다.";
+
+                    return RedirectToAction("UpdateInfo", "Membership");
+                }
+                else
+                {
+                    message = "사용자 정보가 수정되지 않았습니다.";
+                }
+                
+            }
+            else
+            {
+                message = "사용자 정보수정을 위한 정보를 올바르게 입력하세요."; 
+            }
+
+            ModelState.AddModelError(string.Empty, message);
+            return View(user);
+        }
+
         [HttpGet("/LogOut")]
         public async Task<IActionResult> LogOutAsync()
         {
