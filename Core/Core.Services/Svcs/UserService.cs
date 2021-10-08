@@ -147,7 +147,12 @@ namespace Core.Services.Svcs
             {
                 UserId = null,
                 UserName = user.UserName,
-                UserEmail = user.UserEmail
+                UserEmail = user.UserEmail,
+                ChangeInfo = new ChangeInfo()
+                {
+                    UserName = user.UserName,
+                    UserEmail = user.UserEmail
+                }
             };
 
             return userInfo;
@@ -186,6 +191,30 @@ namespace Core.Services.Svcs
 
             return _hasher.CheckThePasswordInfo(login.UserId, login.Password, user.GUIDSalt, user.RNGSalt, user.PasswordHash);
         }
+
+        private bool CompareInfo(UserInfo user)
+        {
+            return user.ChangeInfo.Equals(user);
+        }
+
+        private int WithdrawnUser(WithdrawnInfo user)
+        {
+            var userInfo = _context.Users.Where(u => u.UserId.Equals(user.UserId)).FirstOrDefault(); //데이터베이스에서 값들 받아오기
+
+            if (userInfo == null)
+                return 0;
+
+            bool check = _hasher.CheckThePasswordInfo(user.UserId, user.Password, userInfo.GUIDSalt, userInfo.RNGSalt, userInfo.PasswordHash);
+            int rowAffected = 0;
+
+            if(check)
+            {
+                _context.Remove(userInfo);
+                rowAffected = _context.SaveChanges();
+            }
+
+            return rowAffected;
+        }
         #endregion
 
         bool IUser.MatchTheUserInfo(LoginInfo login) //IUser 상속받은후 명시적 구현
@@ -217,6 +246,16 @@ namespace Core.Services.Svcs
         int IUser.UpdateUser(UserInfo user)
         {
             return UpdateUser(user);
+        }
+
+        bool IUser.CompareInfo(UserInfo user)
+        {
+            return CompareInfo(user);
+        }
+
+        int IUser.WithdrawnUser(WithdrawnInfo user)
+        {
+            return WithdrawnUser(user);
         }
     }
 }

@@ -53,6 +53,7 @@ namespace Core.Web.Controllers
         }
         #endregion
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
@@ -190,6 +191,14 @@ namespace Core.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                // 변경대상 값들을 비교 서비스
+                if(_user.CompareInfo(user)) // 변경사항이 없을경우
+                {
+                    message = "하나 이상의 값이 변경되어야 정보수정이 가능합니다.";
+                    ModelState.AddModelError(string.Empty, message);
+                    return View(user);
+                }
+
                 // 정보수정 서비스
                 if(_user.UpdateUser(user) > 0)
                 {
@@ -210,6 +219,36 @@ namespace Core.Web.Controllers
 
             ModelState.AddModelError(string.Empty, message);
             return View(user);
+        }
+
+        [HttpPost("/Withdrawn")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> WitdhdrawnAsync(WithdrawnInfo withdrawn)
+        {
+            string message = string.Empty;
+            if (ModelState.IsValid)
+            {
+                //탈퇴 서비스
+                if(_user.WithdrawnUser(withdrawn) > 0)
+                {
+                    TempData["Message"] = "사용자 탈퇴가 성공적으로 이루어졌습니다.";
+
+                    await _context.SignOutAsync(scheme: CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    return RedirectToAction("Index", "Membership");
+                }
+                else
+                {
+                    message = "사용자가 탈퇴처리되지 않았습니다.";
+                }
+            }
+            else
+            {
+                message = "사용자가 탈퇴하기 위한 정보를 올바르게 입력하세요.";
+            }
+
+            ViewData["Message"] = message;
+            return View(withdrawn);
         }
 
         [HttpGet("/LogOut")]

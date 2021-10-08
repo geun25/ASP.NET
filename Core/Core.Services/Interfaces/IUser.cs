@@ -34,5 +34,19 @@ namespace Core.Services.Interfaces
         /// <param name="user">사용자정보 뷰모델</param>
         /// <returns></returns>
         int UpdateUser(UserInfo user);
+
+        /// <summary>
+        /// [사용자 정보수정에서 변경대상 비교] true : 전부 똑같을 때, false : 하나라도 다를 때
+        /// </summary>
+        /// <param name="user">사용자정보 뷰모델</param>
+        /// <returns></returns>
+        bool CompareInfo(UserInfo user);
+
+        /// <summary>
+        /// [사용자 탈퇴]
+        /// </summary>
+        /// <param name="user">사용자 탈퇴정보 뷰모델</param>
+        /// <returns></returns>
+        int WithdrawnUser(WithdrawnInfo user);
     }
 }
