@@ -315,3 +315,6 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\Views\Membership\Forbidden.cshtml.g.cs
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\Views\Membership\Register.cshtml.g.cs
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\Views\Membership\UpdateInfo.cshtml.g.cs
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\bin\Debug\net5.0\NetEscapades.Extensions.Logging.RollingFile.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Web\obj\Debug\net5.0\Razor\Views\Data\Cart.cshtml.g.cs

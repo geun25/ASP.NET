@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -262,11 +264,13 @@ namespace Core.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Forbidden()
+        public IActionResult Forbidden([FromServices] ILogger<MembershipController> logger)
         {
             StringValues paramReturnUrl;
             bool exists = _context.Request.Query.TryGetValue("returnUrl", out paramReturnUrl);
             paramReturnUrl = exists ? _context.Request.Host.Value + paramReturnUrl[0] : string.Empty;
+
+            logger.LogTrace($"{MethodBase.GetCurrentMethod().Name} 메서드.권한이 없는 사람이 페이지에 접근 에러 처리.returnUrl : {paramReturnUrl}");
 
             ViewData["Message"] = $"귀하는 {paramReturnUrl} 경로로 접근하려고 했습니다만, <br />" +
                                     "인증된 사용자도 접근하지 못하는 페이지가 있습니다.<br />" +
