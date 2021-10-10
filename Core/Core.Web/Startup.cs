@@ -32,7 +32,7 @@ namespace Core.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {   
-            Common.SetDataProtection(services, @"C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\", "NetCore", Enums.CryptoType.CngCbc);
+            Common.SetDataProtection(services, @"C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\", "Core", Enums.CryptoType.CngCbc);
 
             // 의존성 주입을 사용하기 위해서 서비스로 등록
             //IUser 인터페이스에 UserService 클래스 인스턴스 주입
@@ -58,7 +58,6 @@ namespace Core.Web
             });
 
             services.AddControllersWithViews();
-            //services.AddMvc();
 
             //신원보증과 승인권한
             services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)

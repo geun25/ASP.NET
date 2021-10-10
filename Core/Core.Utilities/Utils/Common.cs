@@ -32,16 +32,17 @@ namespace Core.Utilities.Utils
             {
                 case Enums.CryptoType.Unmanaged:
                     //AES(Advanced Encryption Standard)
-                    //Two-way: 암호화, 복호화
+                    //Two-way 방식 : 암호화, 복호화
                     builder.UseCryptographicAlgorithms(
                         new AuthenticatedEncryptorConfiguration()
                         {
                             EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
                             //SHA(Secure Hash Algorithm)
-                            //One-way: 암호화
+                            //One-way 방식 : 암호화
                             ValidationAlgorithm = ValidationAlgorithm.HMACSHA512
                         });
                     break;
+
                 case Enums.CryptoType.Managed:
                     builder.UseCustomCryptographicAlgorithms(
                         new ManagedAuthenticatedEncryptorConfiguration()
@@ -56,6 +57,7 @@ namespace Core.Utilities.Utils
                             ValidationAlgorithmType = typeof(HMACSHA512)
                         });
                     break;
+
                 case Enums.CryptoType.CngCbc:
                     // Windows CNG algorithm using CBC-mode encryption
                     //CNG(Cryptography API : Next Generation)
@@ -75,6 +77,7 @@ namespace Core.Utilities.Utils
                             HashAlgorithmProvider = null
                         });
                     break;
+
                 case Enums.CryptoType.CngGcm:
                     //Windows CNG algorithm using Galois/ Counter Mode encryption
                     builder.UseCustomCryptographicAlgorithms(

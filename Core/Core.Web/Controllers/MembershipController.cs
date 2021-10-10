@@ -69,7 +69,7 @@ namespace Core.Web.Controllers
             return View();
         }
 
-        [HttpPost("/Login")]
+        [HttpPost("/{controller}/Login")]
         [ValidateAntiForgeryToken] // 위조방지토큰을 통해 View로부터 받은 Post data가 유효한지 검증
         [AllowAnonymous] // 모든 사람 접근 허용
         //Data => Services => Web

@@ -21,4 +21,3 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Data\obj\Debug\net5.0\Core.
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Data\obj\Debug\net5.0\Core.Data.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Data\obj\Debug\net5.0\ref\Core.Data.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Data\obj\Debug\net5.0\Core.Data.pdb
-C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Data\obj\Debug\net5.0\Core.Data.csproj.AssemblyReference.cache

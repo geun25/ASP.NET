@@ -11,4 +11,3 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Databases\obj\Debug\Core.Da
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Databases\obj\Debug\Core.Databases.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Databases\obj\Debug\Core.Databases.pdb
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Databases\bin\Debug\ko\EntityFramework.SqlServer.resources.dll
-C:\Users\rlaeh\source\repos\geun25\ASP.NET\Core\Core.Databases\obj\Debug\Core.Databases.csproj.AssemblyReference.cache
