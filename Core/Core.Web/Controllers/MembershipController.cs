@@ -93,7 +93,7 @@ namespace Core.Web.Controllers
                     // 신원보증과 승인권한
                     var userInfo = _user.GetUserInfo(login.UserId);
                     var roles = _user.GetRolesOwnedByUser(login.UserId);
-                    var userTopRole = roles.FirstOrDefault();
+                    var userTopRole = roles.FirstOrDefault(); // 우선순위가 가장 높은 권한
                     string userDataInfo = userTopRole.UserRole.RoleName + "|" +
                                           userTopRole.UserRole.RolePriority.ToString() + "|" +
                                           userInfo.UserName + "|" +
