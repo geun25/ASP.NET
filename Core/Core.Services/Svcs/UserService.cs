@@ -119,9 +119,11 @@ namespace Core.Services.Svcs
                 UserId = register.UserId.ToLower(),
                 UserName = register.UserName,
                 UserEmail = register.UserEmail,
+
                 GUIDSalt = passwordInfo.GUIDSalt,
                 RNGSalt = passwordInfo.RNGSalt,
                 PasswordHash = passwordInfo.PasswordHash,
+
                 AccessFailedCount = 0,
                 IsMembershipWithdrawn = false,
                 JoinedUtcDate = utcNow
@@ -137,9 +139,14 @@ namespace Core.Services.Svcs
             _context.Add(user);
             _context.Add(userRolesByUser);
 
-            return  _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// 업데이트를 위한 사용자 정보
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         private UserInfo GetUserInfoForUpdate(string userId)
         {
             var user = GetUserInfo(userId);
@@ -162,7 +169,7 @@ namespace Core.Services.Svcs
         {
             var userInfo = _context.Users.Where(u => u.UserId.Equals(user.UserId)).FirstOrDefault(); //데이터베이스에서 값들 받아오기
 
-            if (user == null)
+            if (userInfo == null)
                 return 0;
 
             bool check = _hasher.CheckThePasswordInfo(user.UserId, user.Password, userInfo.GUIDSalt, userInfo.RNGSalt, userInfo.PasswordHash);
@@ -210,7 +217,7 @@ namespace Core.Services.Svcs
             if(check)
             {
                 _context.Remove(userInfo);
-                rowAffected = _context.SaveChanges();
+                rowAffected = _context.SaveChanges(); // 데이터베이스에 적용
             }
 
             return rowAffected;

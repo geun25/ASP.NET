@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+
 namespace Core.Web
 {
     public class Program
@@ -38,7 +39,7 @@ namespace Core.Web
                 options.LogDirectory = "Logs";  // 로그 저장폴더
                 options.FileName = "log-";  // 로그파일접두어. log-20210000.txt
                 options.FileSizeLimit = null;   // 로그파일 사이즈 제한(10MB)       
-                options.RetainedFileCountLimit = null; // 로그파일 보유갯수(2)
+                options.RetainedFileCountLimit = null; // 로그파일 보유갯수(기본 2개 유지)
             }))
             .ConfigureWebHostDefaults(webBuilder =>
             {

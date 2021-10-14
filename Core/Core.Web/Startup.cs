@@ -72,7 +72,7 @@ namespace Core.Web
 
             services.AddSession(options =>
             {
-                options.Cookie.Name = "Core.Session";
+                options.Cookie.Name = ".Core.Session";
                 //세션 제한시간
                 options.IdleTimeout = TimeSpan.FromMinutes(30); // 기본값은 20분
             });
@@ -93,6 +93,7 @@ namespace Core.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 

@@ -193,7 +193,7 @@ namespace Core.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                // 변경대상 값들을 비교 서비스
+                // 1. 변경대상 값들을 비교 서비스
                 if(_user.CompareInfo(user)) // 변경사항이 없을경우
                 {
                     message = "하나 이상의 값이 변경되어야 정보수정이 가능합니다.";
@@ -201,7 +201,7 @@ namespace Core.Web.Controllers
                     return View(user);
                 }
 
-                // 정보수정 서비스
+                // 2. 정보수정 서비스
                 if(_user.UpdateUser(user) > 0)
                 {
                     TempData["Message"] = "사용자 정보수정이 성공적으로 이루어졌습니다.";
@@ -225,7 +225,7 @@ namespace Core.Web.Controllers
 
         [HttpPost("/Withdrawn")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> WitdhdrawnAsync(WithdrawnInfo withdrawn)
+        public async Task<IActionResult> WithdrawnAsync(WithdrawnInfo withdrawn)
         {
             string message = string.Empty;
             if (ModelState.IsValid)

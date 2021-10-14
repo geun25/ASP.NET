@@ -26,7 +26,7 @@ namespace Core.Web.Controllers
         #region private methods
         private List<ItemInfo> GetCartInfos(ref string message)
         {
-            var cartInfos = _context.Session.Get<List<ItemInfo>>(key: "_sessionKeyCartName");
+            var cartInfos = _context.Session.Get<List<ItemInfo>>(key: _sessionKeyCartName);
 
             if(cartInfos == null || cartInfos.Count() < 1)
             {
@@ -40,7 +40,7 @@ namespace Core.Web.Controllers
         {
             if(cartInfos == null)
             {
-                cartInfos = _context.Session.Get<List<ItemInfo>>(_sessionKeyCartName);
+                cartInfos = _context.Session.Get<List<ItemInfo>>(key: _sessionKeyCartName);
 
                 if(cartInfos == null)
                 {

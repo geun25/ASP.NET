@@ -16,7 +16,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form id="frmItems" method="post" onsubmit="btnAdd.diabled = true; btnRemove.disabled = true; return true;">
+<form id="frmItems" method="post" onsubmit="btnAdd.disabled = true; btnRemove.disabled = true; return true;">
     <ul>
         @if (Model != null && Model.Count() > 0)
         {
