@@ -96,9 +96,15 @@
     <Compile Include="Controllers\AlphaController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\DocumentData.cs" />
+    <Compile Include="Data\MemberData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentActs.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberActs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Alpha\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>

@@ -1,0 +1,46 @@
+﻿@using App.Models
+@{
+    //string[] arr = ViewBag.Arr ?? new string[] { };
+    Book book = ViewBag.Book ?? new Book();
+    int nowHour = DateTime.Now.Hour;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @*@foreach (string s in arr)
+            {
+                <div>@s</div>
+            }*@
+
+        <div>
+            현재시간:
+            @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        </div>
+        <div>
+            @if (nowHour > 12)
+            {
+                <text>현재시간은 오후입니다.</text>
+            }
+            else
+            {
+                <text>현재시간은 오전입니다.</text>
+            }
+        </div>
+        <ul>
+            <li>
+                제목: @book.Title
+            </li>
+            <li>
+                작가: @book.Writer
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

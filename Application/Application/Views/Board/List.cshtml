@@ -1,6 +1,7 @@
-﻿
+﻿@model List<Application.Models.Document>
 @{
     Layout = null;
+    var member = ViewData["Member"] as Application.Models.Member;
 }
 
 <!DOCTYPE html>
@@ -11,7 +12,10 @@
     <title>List</title>
 </head>
 <body>
-    <div> 
+    <div>
+        <p>
+            @member.Name 님 환영합니다.
+        </p>
         <table>
             <thread>
                 <tr>
@@ -21,13 +25,13 @@
                 </tr>
             </thread>
             <tbody>
-                @for (int i = 0; i < 10; i++)
+                @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@(i + 1)</td>
-                    <td>제목입니다.</td>
-                    <td>홍길동</td>
-                </tr>
+                    <tr>
+                        <td>@item.Document_Number</td>
+                        <td>@item.Title</td>
+                        <td>@item.Writer</td>
+                    </tr>
                 }
             </tbody>
         </table>
