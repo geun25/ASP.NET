@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LibraryApplication.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Writer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Published_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @item.Writer
+        </td>
+        <td>
+            @item.Summary
+        </td>
+        <td>
+            @item.Publisher
+        </td>
+        <td>
+            @item.Published_date
+        </td>
+        <td>
+            <a href="/Home/Edit/@item.Book_U">수정</a> |
+            <a href="/Home/Details/@item.Book_U">상세</a> |
+            <a href="/Home/Delete/@item.Book_U">삭제</a>
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="text-center">
+    <div class="btn-group">
+        <a class="btn btn-primary">1</a>
+        <a class="btn btn-default">2</a>
+        <a class="btn btn-default">3</a>
+    </div>
+</div>
