@@ -1,6 +1,7 @@
 ﻿using LibraryApplication.Context;
 using LibraryApplication.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -14,13 +15,55 @@ namespace LibraryApplication.Controllers
 
         public ActionResult Index()
         {
-            int listCount = 3;
+            int maxListCount = 3;
             int pageNum = 1;
+            string keyword = Request.QueryString["keyword"] ?? string.Empty;
+            string searchKind = Request.QueryString["searchKind"] ?? string.Empty;
+            int totalCount = 0;
 
             if (Request.QueryString["page"] != null)
                 pageNum = Convert.ToInt32(Request.QueryString["page"]);
 
-            var books = db.Books.Take(listCount).ToList();
+            var books = new List<Book>();
+
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                books = db.Books.OrderBy(x => x.Book_U)
+                        .Skip((pageNum - 1) * maxListCount)
+                        .Take(maxListCount).ToList();
+
+                totalCount = db.Books.Count();
+            }
+            else
+            {
+                switch(searchKind)
+                {
+                    case "Title":
+                        books = db.Books.Where(x => x.Title.Contains(keyword)).ToList();
+                        totalCount = db.Books.Where(x => x.Title.Contains(keyword)).Count();
+                        break;
+
+                    case "Writer":
+                        books = db.Books.Where(x => x.Writer.Contains(keyword)).ToList();
+                        totalCount = db.Books.Where(x => x.Writer.Contains(keyword)).Count();
+                        break;
+
+                    case "Publisher":
+                        books = db.Books.Where(x => x.Publisher.Contains(keyword)).ToList();
+                        totalCount = db.Books.Where(x => x.Publisher.Contains(keyword)).Count();
+                        break;
+                }
+                        
+                books = books.OrderBy(x => x.Book_U)
+                        .Skip((pageNum - 1) * maxListCount)
+                        .Take(maxListCount).ToList();
+            }
+
+            ViewBag.Page = pageNum;
+            ViewBag.TotalCount = totalCount;
+            ViewBag.MaxListCount = maxListCount;
+            ViewBag.SearchKind = searchKind;
+            ViewBag.Keyword = keyword;
 
             return View(books);
         }
