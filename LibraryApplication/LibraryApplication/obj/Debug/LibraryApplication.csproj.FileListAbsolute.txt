@@ -61,3 +61,5 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication\obj\Debug\LibraryApplication.csproj.AssemblyReference.cache
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication\bin\LibraryApplication.Library.dll
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\LibraryApplication\LibraryApplication\bin\LibraryApplication.Library.pdb
