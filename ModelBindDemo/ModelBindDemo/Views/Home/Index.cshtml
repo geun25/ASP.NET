@@ -1,0 +1,23 @@
+﻿@model ModelBindDemo.Models.Person
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div>
+    <label>아이디 : </label>@Html.DisplayFor(m=>m.PersonId)
+</div>
+<div>
+    <label>이름 : </label>@Html.DisplayFor(m => m.Name)
+</div>
+<div>
+    <label>권한 : </label>@Html.DisplayFor(m => m.Role)
+</div>
+<div>
+    <label>거주 도시 : </label>@Html.DisplayFor(m => m.Addr.City)
+</div>
+<div>
+    <label>국가 : </label>@Html.DisplayFor(m => m.Addr.Country)
+</div>

@@ -1,0 +1,26 @@
+﻿@model ModelBindDemo.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Person 새로 추가하기</h2>
+@using (Html.BeginForm())
+{
+    <div>@Html.LabelFor(m => m.PersonId)@Html.EditorFor(m => m.PersonId)</div>
+    <div>@Html.LabelFor(m => m.Name)@Html.EditorFor(m => m.Name)</div>
+    <div>@Html.LabelFor(m => m.Role)@Html.EditorFor(m => m.Role)</div>
+
+    <div>
+        @Html.LabelFor(m => m.Addr.City)
+        @Html.EditorFor(m => m.Addr.City)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Addr.Country)
+        @Html.EditorFor(m => m.Addr.Country)
+    </div>
+
+    <button type="submit">추가하기</button>
+}
+

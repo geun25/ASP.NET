@@ -1,0 +1,33 @@
+﻿[모델 바인딩]
+URL의 특정 세그먼트가 액션 메소드의 특정 타입 매개변수 타입으로 변환되는 과정
+
+모델 바인딩은 요청을 수신하는 시점부터 시작되며, 라우팅 엔진에 의해서 바인딩 작업이 이루어짐.
+
+[모델 바인딩 과정]
+URL 요청이 들어오면 액션호출자(ControllerActionInvoker 클래스)가 라우팅 정보를 확인을 해서
+Index 액션메소드를 사용해야 하는지 확인 작업을 한 후에 이 액션 메소드를 호출하기 위해 
+매개변수 생성해야 한다.
+
+매개변수를 생성하기 위해서는 모델 바인더가 필요하다.
+따라서, 액션호출자는 int 형식의 값을 담당하는 모델 바인더를 선택하여 BindModel 메소드를 호출한다.
+
+그러면 해당 모델 바인더는 Index 메소드 호출에 사용되는 매개변수 int형식의 값을 제공한다.
+
+여기서, 모델 바인더는 IModelBinder 인터페이스를 구현하여 정의된다.
+
+namespace System.Web.Mvc {
+	public interface IModelBinder {
+		object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext);
+	}
+}
+
+대부분 응용프로그램에서는 기본 모델바인더(내장된 바인더 : DefaultModelBinder 클래스)를 그대로 사용한다.
+
+이 DefaultModelBinder 클래스는 매개변수의 데이터를 아래와 같은 순서로 찾게된다.
+
+Request.Form : 사용자가 HTML form 요소를 통해서 제공한 값들
+RouteData.Values : 라우트 정보를 확인하는 과정에서 얻어진 값들
+Request.QueryString : 요청 URL의 문자열 부분에 포함된 데이터
+Request.Files : 요청의 일부로 업로드된 파일들
+
+모델 바인더는 값을 찾는 즉시 검색을 하지 않는다.
