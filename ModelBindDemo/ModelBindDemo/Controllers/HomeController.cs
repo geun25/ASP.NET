@@ -33,5 +33,33 @@ namespace ModelBindDemo.Controllers
         {
             return View("Index", model);
         }
+
+        public ActionResult AddrSimple([Bind(Prefix="Addr")]AddressSimple addrSimple)
+        {
+            return View(addrSimple);
+        }
+
+        // 배열 바인딩
+        /*
+        public ActionResult Names(string[] names)
+        {
+            names = names ?? new string[0];
+            return View(names);
+        }
+        */
+
+        // 컬렉션 바인딩
+        public ActionResult Names(IList<string> names)
+        {
+            names = names ?? new List<string>();
+            return View(names); 
+        }
+
+        // 사용자 정의 모델 형식의 컬렉션 바인딩
+        public ActionResult Address(IList<AddressSimple> addr)
+        {
+            addr = addr ?? new List<AddressSimple>();
+            return View(addr);
+        }
     }
 }

@@ -75,3 +75,4 @@ C:\Users\rlaeh\source\repos\geun25\ASP.NET\ModelBindDemo\ModelBindDemo\obj\Debug
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\ModelBindDemo\ModelBindDemo\obj\Debug\ModelBindDemo.csproj.CopyComplete
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\ModelBindDemo\ModelBindDemo\obj\Debug\ModelBindDemo.dll
 C:\Users\rlaeh\source\repos\geun25\ASP.NET\ModelBindDemo\ModelBindDemo\obj\Debug\ModelBindDemo.pdb
+C:\Users\rlaeh\source\repos\geun25\ASP.NET\ModelBindDemo\ModelBindDemo\obj\Debug\ModelBindDemo.csproj.AssemblyReference.cache
