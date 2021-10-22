@@ -1,0 +1,23 @@
+﻿폼 인증을 사용하기 위해서는 System.Web.Security.FormsAuthentication 클래스를 이용한다.
+
+이 클래스의 Authenticate, SetAuthCookie 메소드를 호출해야 한다.
+
+~ Authenticate : 사용자가 입력한 자격 증명의 유효성을 검증한다.
+~ SetAuthCookie : 브라우저에 보내는 Response에 쿠키를 추가해서 사용자가 매번
+					Request를 할 때마다 다시 인증을 받을 필요가 없도록 해준다.
+
+
+[MVC 프레임워크 필터 형식]
+-인증 필터(Authentication) : 가장 먼저 실행되는 필터(다른 필터나 액션 메소드가 실행되기 전에 실행)
+-권한 부여 필터(Authorization) : 인증 필터가 실행된 후에 다른 필터들이나 액션 메서드가 실행 되기 전에 실행
+오직 인증된 사용자에 의해서만 호출될 수 있도록 권한 부여를 제어하는 필터
+
+namespace System.Web.Mvc{
+	public interface IAuthorizationFilter{
+		void OnAuthorization(AuthorizationContext filterContext);
+	}
+}
+
+-액션 필터(Action) : 액션 메소드가 실행 되기 전이나 실행 후에 실행
+-결과 필터(Result) : 액션 결과가 실행 되기 전이나 후에 실행
+-예외 필터(Exception) : 다른 필터나 액션 메소드, 액션 결과가 예외를 던지는 경우에만 실행
