@@ -15,7 +15,7 @@ namespace LibraryApplication.Controllers
 
         public ActionResult Index()
         {
-            int maxListCount = 3;
+            int maxListCount = 3; // 한 페이지 당 나올수 있는 글
             int pageNum = 1;
             string keyword = Request.QueryString["keyword"] ?? string.Empty;
             string searchKind = Request.QueryString["searchKind"] ?? string.Empty;
@@ -66,7 +66,7 @@ namespace LibraryApplication.Controllers
             return View(books);
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id) 
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,7 +91,7 @@ namespace LibraryApplication.Controllers
             if (ModelState.IsValid)
             {
                 db.Books.Add(book);
-                db.SaveChanges();
+                db.SaveChanges(); // 데이터베이스 저장
 
                 return RedirectToAction("Index");
             }
