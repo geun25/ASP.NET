@@ -97,7 +97,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NaverAccountController.cs" />
     <Compile Include="etc\CustomAuthAttribute.cs" />
+    <Compile Include="etc\NaverAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -120,6 +122,7 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\NaverAccount\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

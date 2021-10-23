@@ -9,6 +9,23 @@
 
 [MVC 프레임워크 필터 형식]
 -인증 필터(Authentication) : 가장 먼저 실행되는 필터(다른 필터나 액션 메소드가 실행되기 전에 실행)
+namespace System.Web.Mvc {
+	public interface IAuthenticationFilter{
+		void OnAuthentication(AuthenticationContext context); - 인증검사 수행(다른 종류 필터 실행 전에 호출)
+		void OnAuthenticationChallenge(AuthenticationChallengeContext context); - 인증 및 권한부여 정책에 맞지 않을때 수행
+	}
+}
+
+AuthenticationContext 클래스에 정의된 속성
+-ActionDescriptor : 필터가 적용된 액션 메소드를 설명하는 ActionDescriptor를 반환 
+-Result : 인증 결과를 나타내는 ActionResult를 설정
+-Principal : 사용자가 이미 인증되었다면, 현재 사용자를 식별하는 IPrincipal 인터페이스의 구현을 반환
+
+AuthenticationChallengeContext에 정의된 속성
+-ActionDescriptor : 필터가 적용된 액션 메소드를 설명하는 ActionDescriptor를 반환 
+-Result : 인증 시도의 결과를 나타내는 ActionResult를 설정
+
+
 -권한 부여 필터(Authorization) : 인증 필터가 실행된 후에 다른 필터들이나 액션 메서드가 실행 되기 전에 실행
 오직 인증된 사용자에 의해서만 호출될 수 있도록 권한 부여를 제어하는 필터
 
@@ -21,3 +38,8 @@ namespace System.Web.Mvc{
 -액션 필터(Action) : 액션 메소드가 실행 되기 전이나 실행 후에 실행
 -결과 필터(Result) : 액션 결과가 실행 되기 전이나 후에 실행
 -예외 필터(Exception) : 다른 필터나 액션 메소드, 액션 결과가 예외를 던지는 경우에만 실행
+
+[AuthorizeAttribute 클래스]
+-public 속성
+	: Users - string형식 - 사용자들의 이름 목록
+	: Roles - string형식 - 역할의 이름 목록
