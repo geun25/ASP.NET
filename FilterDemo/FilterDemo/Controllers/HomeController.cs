@@ -1,4 +1,5 @@
 ﻿using FilterDemo.etc;
+using System;
 using System.Web.Mvc;
 
 namespace FilterDemo.Controllers
@@ -23,6 +24,31 @@ namespace FilterDemo.Controllers
         public string AccountTest()
         {
             return "홈 컨트롤의 AccountTest 액션 메소드";
+        }
+
+        [ExceptionTest]
+        public string ExceptionTest(int id)
+        {
+            if(id > 20)
+            {
+                return String.Format($"아이디 값 : {id}");
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("id", id, "");
+            }
+        }
+
+        public ActionResult About()
+        {
+            throw new Exception("예외 발생");
+        }
+
+        [CustomAction2]
+        [CustomResult]
+        public string ActionFilterTest()
+        {
+            return "액션 필터 테스트 입니다";
         }
     }
 }

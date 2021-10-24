@@ -16,7 +16,7 @@ namespace System.Web.Mvc {
 	}
 }
 
-AuthenticationContext 클래스에 정의된 속성
+AuthenticationContext에 정의된 속성
 -ActionDescriptor : 필터가 적용된 액션 메소드를 설명하는 ActionDescriptor를 반환 
 -Result : 인증 결과를 나타내는 ActionResult를 설정
 -Principal : 사용자가 이미 인증되었다면, 현재 사용자를 식별하는 IPrincipal 인터페이스의 구현을 반환
@@ -36,10 +36,66 @@ namespace System.Web.Mvc{
 }
 
 -액션 필터(Action) : 액션 메소드가 실행 되기 전이나 실행 후에 실행
+namespace System,Web.Mvc{
+	public interface IActionFilter{
+		void OnActionExecuting(ActionExecutingContext filterContext);
+		void OnActionExecuted(ActionExecutedContext filterContext);
+	}
+}
+
+ActionExecutingContext 클래스의 속성
+- ActionDescriptor(ActionDescriptor형식) 
+- Result(ActionResult형식)
+
+
 -결과 필터(Result) : 액션 결과가 실행 되기 전이나 후에 실행
+
+namespace System.Web.Mvc{
+	public interface IResultFilter{
+		void OnResultExecuting(ResultExecutingContext filterContext); - 액션 결과가 실행되기 전(액션 메소드가 액션 결과를 반환하는 시점) 호출
+		void OnResultExecuted(ResultExecutedContext filterContext); - 액션 결과가 실행된 후에 호출
+	}
+}
+
+
+
 -예외 필터(Exception) : 다른 필터나 액션 메소드, 액션 결과가 예외를 던지는 경우에만 실행
+
+namespace System.Web.Mvc{
+	public interface IExceptionFilter{
+		void OnException(ExceptionContext filterContext); - 처리되지 않은 예외가 발생하면 호출.
+
+	}
+}
+
+OnException 메소드에서 사용되는 매개변수 ExceptionContext 개체는 인증필터, 권한부여 필터 구현에 사용되던 컨텍스트 개체와
+마찬가지로 ControllerContext 클래스에서 파생된 개체이다.
+
+ExceptionContext에 정의된 속성
+- ActionDescriptor(ActionDescriptor타입) : 액션 메소드에 대한 상세 정보 제공
+- Result(ActionResult타입) : 액션 메소드에 대한 결과
+- Exception(Exception타입) : 처리되지 않은 예외
+- ExceptionHandled(bool타입) : 다른 종류의 필터가 예외를 처리했는지 여부를 파악
+
+====================================================================================
+** ControllerContext의 유용한 속성들
+- Controller(ControllerBase타입) : 현재 요청에 대한 컨트롤러 개체 반환
+- HttpContext(HttpContextBase타입) : 요청에 대한 여러 상세정보를 얻을 수 있음
+- IsChildAction(bool타입) : 필터가 적용된 액션이 자식 액션인지 여부를 판단
+- RequestContext(RequestContext타입) : HttpContext와 라우트 데이터 정보를 얻을 수 있다.
+- RouteData(RouteData) : 현재 요청에 대한 라우트 정보를 반환
+====================================================================================
 
 [AuthorizeAttribute 클래스]
 -public 속성
 	: Users - string형식 - 사용자들의 이름 목록
 	: Roles - string형식 - 역할의 이름 목록
+
+
+[내장 예외 필터 클래스(HandleErrorAttribute)의 속성]
+- ExceptionType(Type형식) : 필터에 의해 처리되는 예외 형식
+- View(string형식) : 필터가 렌더링할 뷰템플릿 이름, 이름을 지정하지 않으면 기본값 Error를 사용한다.
+	기본값 적용예>
+	Views/컨트롤러명/Error.cshtml 또는 Views/Shared/Error.cshtml
+- Master(string형식) : 필터의 뷰를 렌더링하는 경우 사용되는 레이아웃 템플릿 이름. 이름을 지정하지 않으면 
+기본 레이아웃 페이지를 이용한다.

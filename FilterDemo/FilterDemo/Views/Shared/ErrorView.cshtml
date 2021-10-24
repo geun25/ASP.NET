@@ -1,0 +1,16 @@
+﻿@model int
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ErrorView</title>
+</head>
+<body>
+    <h2>에러가 발생했습니다.</h2>
+    <p>@Model 은 범위를 벗어난 값입니다. 다시 확인해주세요. </p>
+    <div> 
+        @Html.ActionLink("확인 후 다시 요청하세요", "Index")
+    </div>
+</body>
+</html>
