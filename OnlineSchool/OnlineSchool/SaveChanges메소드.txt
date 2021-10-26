@@ -1,0 +1,22 @@
+﻿SaveChanges메소드 호출 과정
+
+새로운 엔티티를 Add메소드에 전달하면
+이때 이 엔티티의 상태가 Added로 설정된다.
+
+그 다음에 SaveChanges메소드를 호출하면 데이터베이스 컨텍스트가 SQL
+INSERT명령을 실행하게 된다.
+
+** 엔티티의 상태들
+- Added : 아직 데이터베이스에 엔티티가 존재하지 않는 상태
+			(SaveChanges메소드가 INSERT구문을 실행한다.)
+
+- Unchanged : 데이터베이스에 읽어온 직후의 엔티티 상태
+			(SaveChanges메소드에 의해 어떠한 작업도 수행되지 않는다.)
+
+- Modified : 엔티티의 속성값들 중에서 일부 또는 전체가 변경된 상태
+			(SaveChanges메소드가 UPDATE구문을 실행한다.)
+
+- Deleted : 삭제해야 할 엔티티로 표시된 상태
+			(SaveChanges메소드가 DELETE구문을 실행한다.)
+
+- Detached : 이 상태의 엔티티는 더이상 데이터베이스 컨텍스트에 의해서 추적되지 않는다.
