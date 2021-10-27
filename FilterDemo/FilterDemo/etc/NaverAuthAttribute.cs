@@ -31,7 +31,7 @@ namespace FilterDemo.etc
         // 다시 한번 OnAuthenticationChallenge 메소드를 호출
         // 인증 필터에 액션이 완료되었거나 결과가 변경되었다는 사실을 알릴 때 사용한다.
         
-        // 아래 코드는 SigmOut 메소드를 호출했기 때문에 액션 메소드를 다시 사용하기 위해서는 
+        // 아래 코드는 SignOut 메소드를 호출했기 때문에 액션 메소드를 다시 사용하기 위해서는 
         // 인증을 매번 거쳐야 한다.
         public void OnAuthenticationChallenge(AuthenticationChallengeContext context)
         {

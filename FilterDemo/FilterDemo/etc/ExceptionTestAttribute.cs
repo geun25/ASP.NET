@@ -14,7 +14,7 @@ namespace FilterDemo.etc
             {
                 //filterContext.Result = new RedirectResult("~/Content/RangeErrorPage.html");
                 //filterContext.ExceptionHandled = true;
-                int val = (int)(((ArgumentOutOfRangeException)filterContext.Exception).ActualValue);
+                int val = (int)(((ArgumentOutOfRangeException)filterContext.Exception).ActualValue); //id값
 
                 filterContext.Result = new ViewResult
                 {
