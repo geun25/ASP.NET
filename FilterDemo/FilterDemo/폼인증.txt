@@ -12,7 +12,7 @@
 namespace System.Web.Mvc {
 	public interface IAuthenticationFilter{
 		void OnAuthentication(AuthenticationContext context); - 인증검사 수행(다른 종류 필터 실행 전에 호출)
-		void OnAuthenticationChallenge(AuthenticationChallengeContext context); - 인증 및 권한부여 정책에 맞지 않을때 수행
+		void OnAuthenticationChallenge(AuthenticationChallengeContext context); - 요청이 액션 메소드의 인증 및 권한부여 정책에 맞지 않을때 호출
 	}
 }
 
@@ -23,7 +23,7 @@ AuthenticationContext에 정의된 속성
 
 AuthenticationChallengeContext에 정의된 속성
 -ActionDescriptor : 필터가 적용된 액션 메소드를 설명하는 ActionDescriptor를 반환 
--Result : 인증 시도의 결과를 나타내는 ActionResult를 설정
+-Result : 인증 시도의 결과를 나타내는 ActionResult를 설정, 인증 필터가 MVC프레임워크에게 ActionResult를 전달 가능
 
 
 -권한 부여 필터(Authorization) : 인증 필터가 실행된 후에 다른 필터들이나 액션 메서드가 실행 되기 전에 실행
@@ -56,8 +56,6 @@ namespace System.Web.Mvc{
 		void OnResultExecuted(ResultExecutedContext filterContext); - 액션 결과가 실행된 후에 호출
 	}
 }
-
-
 
 -예외 필터(Exception) : 다른 필터나 액션 메소드, 액션 결과가 예외를 던지는 경우에만 실행
 
