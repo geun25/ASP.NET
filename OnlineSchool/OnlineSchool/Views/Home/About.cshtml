@@ -1,7 +1,28 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model IEnumerable<OnlineSchool.ViewModels.EnrollmentDateGroup>
+
+@{
+    ViewBag.Title = "수강생 통계";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<table class="table">
+    <tr>
+        <th>
+            수강신청일
+        </th>
+        <th>
+            수강생
+        </th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @item.StudentCount
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,13 @@
+﻿* ASP.NET MVC에서는 자동으로 액션 메소드에 sortOrder 매개변수를 제공한다.
+따라서, 이 매개변수를 이용해서 정렬에 활용을 한다.
+
+내림차순 정렬을 지정하는 경우에는 밑줄(_)과 함께 "desc"문자열을 붙이고, 오름차순은 기본값이다.
+
+ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+	초기		Name링크		Date링크
+Name 오름		내림			오름
+Name 내림		오름			오름
+Name 오름		오름			내림
+Name 내림		오름			오름
