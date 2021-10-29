@@ -36,7 +36,7 @@ namespace System.Web.Mvc{
 }
 
 -액션 필터(Action) : 액션 메소드가 실행 되기 전이나 실행 후에 실행
-namespace System,Web.Mvc{
+namespace System.Web.Mvc{
 	public interface IActionFilter{
 		void OnActionExecuting(ActionExecutingContext filterContext);
 		void OnActionExecuted(ActionExecutedContext filterContext);

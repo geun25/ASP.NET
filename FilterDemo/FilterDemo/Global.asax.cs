@@ -13,7 +13,7 @@ namespace FilterDemo
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            GlobalFilters.Filters.Add(new HandleErrorAttribute() { View="CustomError"});
+            GlobalFilters.Filters.Add(new HandleErrorAttribute() { View="CustomError"}); // 뷰 따로 설정안하면 Home폴더 뷰 실행
         }
     }
 }

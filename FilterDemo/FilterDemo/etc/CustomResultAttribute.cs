@@ -17,7 +17,7 @@ namespace FilterDemo.etc
 
         public void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            timer.Stop();
+            timer.Stop(); // 결과 실행후에 Stop
             filterContext.HttpContext.Response.Write(
                 string.Format($"<div>액션 결과 실행 시간: {timer.Elapsed.TotalSeconds:F6}</div>"));
         }
