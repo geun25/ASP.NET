@@ -17,7 +17,7 @@ using System.Web;
 namespace OnlineSchool.DAL
 {
     public class DataInitializer :
-        DropCreateDatabaseIfModelChanges<SchoolContext>
+        DropCreateDatabaseIfModelChanges<SchoolContext> // 변경 내용 자동 생성
     {
         protected override void Seed(SchoolContext context)
         {
