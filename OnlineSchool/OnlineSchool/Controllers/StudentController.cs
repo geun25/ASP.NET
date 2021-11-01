@@ -96,14 +96,14 @@ namespace OnlineSchool.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid) // 유효성 검사
                 {
                     db.Students.Add(student);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            catch(DataException)
+            catch(DataException) // 외부의 원인으로 인해 발생하는 경우가 많음.
             {
                 ModelState.AddModelError("", "저장할 수 없습니다. 다시 시도해주세요!");
             }
