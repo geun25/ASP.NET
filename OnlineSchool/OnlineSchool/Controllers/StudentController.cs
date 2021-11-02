@@ -20,8 +20,8 @@ namespace OnlineSchool.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder; 
-            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : ""; // 초기값 name_desc
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date"; // 초기값 Date
 
             if(searchString != null)
             {
