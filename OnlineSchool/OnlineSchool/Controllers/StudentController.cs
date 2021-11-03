@@ -19,7 +19,7 @@ namespace OnlineSchool.Controllers
         // GET: Student
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            ViewBag.CurrentSort = sortOrder; 
+            ViewBag.CurrentSort = sortOrder; // 현재 정렬 속성값
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : ""; // 초기값 name_desc
             ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date"; // 초기값 Date
 
