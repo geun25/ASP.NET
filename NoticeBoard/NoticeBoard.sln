@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoEngine", "MemoEngine\Me
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MemoEngine.Database", "MemoEngine.Database\MemoEngine.Database.sqlproj", "{7E39D13A-9776-41CD-A0CF-5B7BC9A4DD74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoEngine.Answers", "MemoEngine.Answers\MemoEngine.Answers.csproj", "{8866F042-184A-4CCC-A8D8-9DB0E2ACD2DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoEngine.Answers", "MemoEngine.Answers\MemoEngine.Answers.csproj", "{8866F042-184A-4CCC-A8D8-9DB0E2ACD2DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
