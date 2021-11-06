@@ -105,4 +105,30 @@ public ActionResult AddrSimple([Bind(Prefix="Addr")]AddressSimple addrSimple)
 
 <img src = "https://user-images.githubusercontent.com/78133537/140453038-f27a6964-6a57-4b74-86f5-bf35db3f99d3.png" height="400"> <img src = "https://user-images.githubusercontent.com/78133537/140453239-f05ab3a3-5177-400b-aafe-ad1a922349c5.png" height="400">
 
+---
+### 4. 
+* 사용자 정의 모델 형식의 컬렉션 Binding
+```swift
+public ActionResult Address(IList<AddressSimple> addr)
+{
+	addr = addr ?? new List<AddressSimple>();
+    	return View(addr);
+}
+```
+```swift
+using (Html.BeginForm())
+{
+	for (int i = 0; i < 3; i++)
+	{
+	 	<fieldset>
+			<legent>주소 @(i+1) :</legent>
+			<div><label>거주 도시 : </label>@Html.Editor("[" + i + "].City")</div>
+			<div><label>거주 국가 : </label>@Html.Editor("[" + i + "].Country")</div>
+	    	</fieldset>
+	}
+	<button type="submit">확인</button>
+}
+```
+
+<img src = "https://user-images.githubusercontent.com/78133537/140604157-f362e17c-886b-47be-843f-caff5628d7e5.png" height="400"> <img src = "https://user-images.githubusercontent.com/78133537/140604161-f494376f-c9ad-4692-b109-a085d8410ca0.png" height="400">
 
