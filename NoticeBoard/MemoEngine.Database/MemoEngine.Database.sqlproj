@@ -61,4 +61,17 @@
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="dbo\Views" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Answers.sql" />
+    <Build Include="dbo\Tables\AnswersComments.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersCount.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersDelete.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersDetails.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersList.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersModify.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersReply.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersSearchCount.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersSearchList.sql" />
+    <Build Include="dbo\Stored Procedures\AnswersWrtie.sql" />
+  </ItemGroup>
 </Project>
