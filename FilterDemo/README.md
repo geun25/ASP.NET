@@ -122,7 +122,6 @@ public void OnAuthenticationChallenge(AuthenticationChallengeContext context)
 }
 ```
 
-
 * AuthenticationChallengeContext에 정의된 속성
 
 -ActionDescriptor : 필터가 적용된 액션 메소드를 설명하는 ActionDescriptor를 반환 
@@ -147,8 +146,10 @@ namespace System.Web.Mvc{
 }
 
 * ActionExecutingContext 클래스의 속성
-- ActionDescriptor(ActionDescriptor형식) 
-- Result(ActionResult형식)
+
+-ActionDescriptor(ActionDescriptor형식) 
+
+-Result(ActionResult형식)
 
 
 ### 4. 결과 필터(Result) : 액션 결과가 실행 되기 전이나 후에 실행
@@ -173,11 +174,51 @@ namespace System.Web.Mvc{
 ```
 * OnException 메소드 : 처리되지 않은 예외가 발생하면 호출.
 
-OnException 메소드에서 사용되는 매개변수 ExceptionContext 개체는 인증필터, 권한부여 필터 구현에 사용되던 컨텍스트 개체와
-마찬가지로 ControllerContext 클래스에서 파생된 개체이다.
+OnException 메소드에서 사용되는 매개변수 ExceptionContext 개체는 인증필터, 권한부여 필터 구현에 사용되던 컨텍스트 개체와 마찬가지로 ControllerContext 클래스에서 파생된 개체이다.
+<br><br>
+* ControllerContext의 유용한 속성들
 
+-Controller(ControllerBase타입) : 현재 요청에 대한 컨트롤러 개체 반환
+
+-HttpContext(HttpContextBase타입) : 요청에 대한 여러 상세정보를 얻을 수 있음.
+
+-IsChildAction(bool타입) : 필터가 적용된 액션이 자식 액션인지 여부를 판단
+
+-RequestContext(RequestContext타입) : HttpContext와 라우트 데이터 정보를 얻을 수 있다.
+
+-RouteData(RouteData) : 현재 요청에 대한 라우트 정보를 반환
+<br><br>
 * ExceptionContext에 정의된 속성
-- ActionDescriptor(ActionDescriptor타입) : 액션 메소드에 대한 상세 정보 제공
-- Result(ActionResult타입) : 액션 메소드에 대한 결과
-- Exception(Exception타입) : 처리되지 않은 예외
-- ExceptionHandled(bool타입) : 다른 종류의 필터가 예외를 처리했는지 여부를 파악
+
+-ActionDescriptor(ActionDescriptor타입) : 액션 메소드에 대한 상세 정보 제공
+
+-Result(ActionResult타입) : 액션 메소드에 대한 결과
+
+-Exception(Exception타입) : 처리되지 않은 예외
+
+-ExceptionHandled(bool타입) : 다른 종류의 필터가 예외를 처리했는지 여부를 파악
+<br><br>
+* 사용자 정의 예외 필터 : ViewResult 개체를 새로 생성한다.
+```swift
+if(!filterContext.ExceptionHandled && filterContext.Exception is ArgumentOutOfRangeException)
+{
+	int val = (int)(((ArgumentOutOfRangeException)filterContext.Exception).ActualValue);
+
+	filterContext.Result = new ViewResult
+	{
+    		ViewName = "ErrorView",
+		ViewData = new ViewDataDictionary<int>(val)
+	};
+	
+	filterContext.ExceptionHandled = true;
+}
+```
+<br><br>
+* [내장 예외 필터 클래스(HandleErrorAttribute)의 속성]
+
+- ExceptionType(Type형식) : 필터에 의해 처리되는 예외 형식
+
+- View(string형식) : 필터가 렌더링할 뷰템플릿 이름, 이름을 지정하지 않으면 기본값 Error를 사용한다.
+기본값 적용예 > Views/컨트롤러명/Error.cshtml 또는 Views/Shared/Error.cshtml
+
+- Master(string형식) : 필터의 뷰를 렌더링하는 경우 사용되는 레이아웃 템플릿 이름. 이름을 지정하지 않으면 기본 레이아웃 페이지를 이용한다.
