@@ -275,3 +275,32 @@ try-catch문을 이용해 예외처리
 return new HttpNotFoundResult(); //HttpStatusCodeResult클래스의 파생클래스
 return HttpNotFound(); 
 ```
+<br><br>
+-DELETE 액션 메소드(GET)
+```swift
+if(saveChangeError.GetValueOrDefault())
+{
+  ViewBag.ErrorMesasge = "삭제 실패하였습니다. 다시 시도해주세요";
+}
+```
+삭제 처리 여부 메시지 추가
+<br><br>
+-DELETE 액션 메소드(POST)
+```swift
+public ActionResult Delete(int id)
+{
+  try
+  {
+    Student student = db.Students.Find(id);
+    db.Students.Remove(student); 
+    db.SaveChanges(); 
+  }
+  catch(DataException)
+  {
+    return RedirectToAction("Delete", new { id = id, saveChangeError = true });
+  }
+  return RedirectToAction("Index");
+}
+```
+Remove메소드 : 엔티티의 상태를 Deleted 상태로 설정
+saveChanges메소드 : SQL DELETE명령이 실행된다.
