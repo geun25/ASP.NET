@@ -151,6 +151,28 @@ namespace System.Web.Mvc{
 
 -Result(ActionResult형식)
 
+* 필터 테스트
+```swift
+private Stopwatch timer;
+
+public void OnActionExecuting(ActionExecutingContext filterContext)
+{
+	timer = Stopwatch.StartNew(); 
+}
+
+public void OnActionExecuted(ActionExecutedContext filterContext)
+{
+	timer.Stop();
+	if(filterContext.Exception == null)
+	{
+		filterContext.HttpContext.Response.Write(
+		string.Format($"<div>액션 메소드의 실행 시간: {timer.Elapsed.TotalSeconds:F6}</div>"));
+	} 
+}
+```
+<image src = "https://user-images.githubusercontent.com/78133537/140911990-19002af6-ca90-490b-8782-bdb6514dc798.png" width = "900">
+실행시간은 먼저 브라우저 상에 보여지는것 뿐, 액션 메소드가 호출된 후 실행된 결과이다. 
+
 
 ### 4. 결과 필터(Result) : 액션 결과가 실행 되기 전이나 후에 실행
 ```swift
@@ -163,6 +185,10 @@ namespace System.Web.Mvc{
 ```
 * OnResultExecuting 메소드 : 액션 결과가 실행되기 전(액션 메소드가 액션 결과를 반환하는 시점) 호출
 * OnResultExecuted 메소드 : 액션 결과가 실행된 후에 호출
+	
+Action메소드는 ActionResult의 파생클래스인 액션결과를 반환시켜준다.
+* 필터 테스트
+<image src = "https://user-images.githubusercontent.com/78133537/140911743-75e0d9c7-914f-4a65-8ff3-313a61d369af.png" width = "900"> 
 
 ### 5. 예외 필터(Exception) : 다른 필터나 액션 메소드, 액션 결과가 예외를 던지는 경우에만 실행
 ```swift
@@ -213,12 +239,11 @@ if(!filterContext.ExceptionHandled && filterContext.Exception is ArgumentOutOfRa
 	filterContext.ExceptionHandled = true;
 }
 ```
-<br><br>
 * [내장 예외 필터 클래스(HandleErrorAttribute)의 속성]
 
-- ExceptionType(Type형식) : 필터에 의해 처리되는 예외 형식
+-ExceptionType(Type형식) : 필터에 의해 처리되는 예외 형식
 
-- View(string형식) : 필터가 렌더링할 뷰템플릿 이름, 이름을 지정하지 않으면 기본값 Error를 사용한다.
+-View(string형식) : 필터가 렌더링할 뷰템플릿 이름, 이름을 지정하지 않으면 기본값 Error를 사용한다.
 기본값 적용예 > Views/컨트롤러명/Error.cshtml 또는 Views/Shared/Error.cshtml
 
-- Master(string형식) : 필터의 뷰를 렌더링하는 경우 사용되는 레이아웃 템플릿 이름. 이름을 지정하지 않으면 기본 레이아웃 페이지를 이용한다.
+-Master(string형식) : 필터의 뷰를 렌더링하는 경우 사용되는 레이아웃 템플릿 이름. 이름을 지정하지 않으면 기본 레이아웃 페이지를 이용한다.
