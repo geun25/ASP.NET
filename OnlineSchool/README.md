@@ -53,6 +53,16 @@ public class Course
   }
 ```
 과목은 수강 테이블에서 외래키로 동작하고, 학생 모델과 마찬가지로 탐색 속성 Enrollments를 추가한다.
+<br><br>
+- 수강 그룹 모델 생성
+```swift
+public class EnrollmentDateGroup
+{
+  [DataType(DataType.Date)]
+  public DateTime? EnrollmentDate { get; set; }
+  public int StudentCount { get; set; }
+}
+```
 
 ---
 
@@ -143,33 +153,185 @@ SchoolContext의 테스트 데이터가 입력될 LocalDB 설정
     @Html.DisplayNameFor(model => model.Enrollments)
 </dt>
 <dd>
-    <table class="table">
-        <tr>
-            <th>강좌명</th>
-            <th>성적</th>
-        </tr>
-        @foreach(var item in Model.Enrollments)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Score)
-                </td>
-            </tr>
-        }
-    </table>
+  <table class="table">
+    <tr>
+      <th>강좌명</th>
+      <th>성적</th>
+    </tr>
+    @foreach(var item in Model.Enrollments)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Course.Title)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Score)
+        </td>
+      </tr>
+    }
+  </table>
 </dd>
 ```
 
 ![image](https://user-images.githubusercontent.com/78133537/141381007-a69d236d-c366-46c6-a79f-ff93f496296e.png)
 
+### Student의 Index 
+
+- 정렬 기능
+```swift
+<table class="table">
+  <tr>
+    <th>
+        @Html.ActionLink("이름", "Index", new {sortOrder = ViewBag.NameSort, currentFilter = ViewBag.CurrentFilter }) 
+    </th>
+    <th>
+        @Html.ActionLink("수강신청일", "Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })
+    </th>
+  </tr>
+<table>
+```
+
+- 검색 기능 : searchString 문자열을 포함하는 데이터 표시
+```swift
+@using (Html.BeginForm("Index", "Student", FormMethod.Get))
+{
+  <p>
+    이름 : @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="검색" />
+  </p>
+}
+```
+
+- 페이지 기능
+```swift
+@model PagedList.IPagedList<OnlineSchool.Models.Student>
+@using PagedList.Mvc;
+```
+
+```swift
+페이지 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrtder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+```
+
+### Home의 About
+- 수강 통계 기능
+```swift
+@model IEnumerable<OnlineSchool.ViewModels.EnrollmentDateGroup>
+```
+```swift
+<table class="table">
+  <tr>
+    <th>
+      수강신청일
+    </th>
+    <th>
+      수강생
+    </th>
+  </tr>
+  @foreach(var item in Model)
+  {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+      </td>
+      <td>
+        @item.StudentCount
+      </td>
+    </tr>
+  }
+</table>
+```
 ---
 
 ## Controller
 
+### HomeController
+
+- About 액션 메소드
+```swift
+public ActionResult About()
+{
+    // Students의 각 엔티티들을 grouping후에, 엔티티들의 개수를 계산
+    IQueryable<EnrollmentDateGroup> data = from student in db.Students
+                                           group student by student.EnrollmentDate into dateGroup
+                                           select new EnrollmentDateGroup()
+                                           {
+                                               EnrollmentDate = dateGroup.Key,
+                                               StudentCount = dateGroup.Count()
+                                           };
+    return View(data.ToList());
+}
+```
 ### StudentController
+
+- INDEX 액션 메소드 : 이름과 수강신청일 정렬기능, 검색기능
+```swift
+public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+{
+  ViewBag.CurrentSort = sortOrder; // 현재 정렬 속성값
+  ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : ""; // 초기값 name_desc
+  ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date"; // 초기값 Date
+  
+  // 페이지 기능
+  if(searchString != null)
+  {
+    page = 1;
+  }
+  else
+  {
+    searchString = currentFilter;
+  }
+
+  ViewBag.CurrentFilter = searchString;
+
+  //LINQ 문법을 이용하여 Students 테이블에서 각각의 필드를 가져온다.
+  var students = from s in db.Students
+                 select s;
+                 
+  // 검색 기능
+  if(!String.IsNullOrEmpty(searchString))
+  {
+    students = students.Where(s => s.Name.Contains(searchString));
+  }
+
+  //switch문을 이용해서 내림차순, 오름차순 정렬 토글처리
+  switch(sortOrder)
+  {
+    case "name_desc":
+      students = students.OrderByDescending(s => s.Name);
+      break;
+    case "Date":
+      students = students.OrderBy(s => s.EnrollmentDate);
+      break;
+    case "date_desc":
+      students = students.OrderByDescending(s => s.EnrollmentDate);
+      break;
+    default:
+      students = students.OrderBy(s => s.Name);
+      break;
+  }
+
+  int pageSize = 4; //한 페이지당 4명의 수강생
+  int pageNumber = (page ?? 1); // 해당페이지가 Null이면 1을 넘김.
+
+  //return View(db.Students.ToList());
+  //return View(students.ToList()); // 기본적으로 오름차순으로 
+  return View(students.ToPagedList(pageNumber, pageSize));
+}
+```
+
+*** ASP.NET MVC에서는 자동으로 액션 메소드에 sortOrder 매개변수를 제공한다.
+
+따라서, 이 매개변수를 이용해서 정렬에 활용을 한다.
+
+내림차순 정렬을 지정하는 경우에는 '_ desc' 문자열을 붙이고, 오름차순은 기본값이다.
+
+	초기		Name링크		Date링크
+Name 오름		내림			오름
+Name 내림		오름			오름
+Date 오름		오름			내림
+Date 내림		오름			오름
 
 - Create 액션 메소드(POST)
 
@@ -304,3 +466,9 @@ public ActionResult Delete(int id)
 ```
 Remove메소드 : 엔티티의 상태를 Deleted 상태로 설정
 saveChanges메소드 : SQL DELETE명령이 실행된다.
+
+---
+
+## 정렬기능
+
+
