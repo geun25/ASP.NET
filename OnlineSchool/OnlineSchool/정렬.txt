@@ -9,5 +9,5 @@ ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 	초기		Name링크		Date링크
 Name 오름		내림			오름
 Name 내림		오름			오름
-Name 오름		오름			내림
-Name 내림		오름			오름
+Date 오름		오름			내림
+Date 내림		오름			오름
