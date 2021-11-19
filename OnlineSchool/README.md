@@ -327,12 +327,6 @@ public ActionResult Index(string sortOrder, string currentFilter, string searchS
 
 내림차순 정렬을 지정하는 경우에는 '_ desc' 문자열을 붙이고, 오름차순은 기본값이다.
 
-	초기		Name링크		Date링크
-Name 오름		내림			오름
-Name 내림		오름			오름
-Date 오름		오름			내림
-Date 내림		오름			오름
-
 - Create 액션 메소드(POST)
 
 ```swift
@@ -466,9 +460,3 @@ public ActionResult Delete(int id)
 ```
 Remove메소드 : 엔티티의 상태를 Deleted 상태로 설정
 saveChanges메소드 : SQL DELETE명령이 실행된다.
-
----
-
-## 정렬기능
-
-
